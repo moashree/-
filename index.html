@@ -3,140 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHRE DESIGN | المصمم الأسطوري</title>
+    <title>ASHRE WORLD | عالم التصميم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #ff0000;
-            --bg-dark: #050505;
-            --card-bg: #111;
+            --primary: #ff0000;
+            --secondary: #00d4ff;
+            --bg: #020202;
         }
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg);
             color: white;
             margin: 0;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
+        /* خلفية النجوم المتحركة */
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #110000 0%, #020202 100%);
+            z-index: -1;
+        }
+
         header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle, #220000 0%, #050505 100%);
             text-align: center;
+            animation: fadeIn 2s ease-in;
         }
-        .hero-title { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; color: var(--primary-color); text-shadow: 0 0 20px rgba(255,0,0,0.5); }
-        .hero-sub { font-size: 1.5rem; color: #888; margin-bottom: 30px; }
-        .btn-group { display: flex; gap: 20px; }
-        .btn {
-            padding: 15px 30px;
-            border-radius: 50px;
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--primary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* أزرار السوشيال ميديا الصغيرة */
+        .social-bar {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .social-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: 0.3s;
             text-decoration: none;
-            font-weight: bold;
-            transition: 0.4s;
-            cursor: pointer;
+            opacity: 0.7;
         }
-        .btn-main { background: var(--primary-color); color: white; box-shadow: 0 0 15px var(--primary-color); }
-        .btn-main:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--primary-color); }
-        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); }
-        
-        .section { padding: 100px 20px; text-align: center; }
+        .social-icon:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        .section { padding: 80px 20px; text-align: center; }
+
+        /* كروت الأعمال المتحركة */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .work-card {
-            background: var(--card-bg);
-            height: 250px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #222;
-            transition: 0.3s;
+            background: #0a0a0a;
+            border-radius: 15px;
             overflow: hidden;
+            border: 1px solid #1a1a1a;
             position: relative;
+            transition: 0.5s;
         }
-        .work-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
-        .work-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .work-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255,0,0,0.2);
+            transform: scale(1.05);
+        }
+        .work-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
 
+        /* الفورم بشكل احترافي */
         .order-form {
             max-width: 500px;
             margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 30px;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
             border: 1px solid #333;
         }
         input, textarea, select {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: #1a1a1a;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 10px;
-            box-sizing: border-box;
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            background: #111; border: 1px solid #333;
+            color: white; border-radius: 8px;
         }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 20px var(--primary);
+            border: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
+<div class="bg-animate"></div>
+
 <header>
-    <h1 class="hero-title">ASHRE DESIGN</h1>
-    <p class="hero-sub">نحول خيالك إلى واقع بصري مذهل</p>
-    <div class="btn-group">
-        <a href="#portfolio" class="btn btn-main">مشاهدة أعمالي</a>
-        <a href="#order" class="btn btn-outline">طلب تصميم جديد</a>
+    <h1 class="hero-title">ASHRE</h1>
+    <p style="color: #888; font-size: 1.2rem;">Creative Graphic Designer</p>
+    
+    <div class="social-bar">
+        <a href="https://youtube.com" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="https://t.me/A_S_7_E" class="social-icon"><i class="fab fa-telegram"></i></a>
+        <a href="https://instagram.com/mo_ashre" class="social-icon"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <a href="#portfolio" class="btn-main">مشاهدة الإبداع</a>
     </div>
 </header>
 
 <div id="portfolio" class="section">
-    <h2>معرض التصميمات</h2>
+    <h2 style="font-size: 2.5rem; margin-bottom: 50px;">معرض الأعمال</h2>
     <div class="portfolio-grid">
-        <div class="work-card"><p>لوجو احترافي</p></div>
-        <div class="work-card"><p>بنر يوتيوب 4K</p></div>
-        <div class="work-card"><p>تصميم بوستر سينمائي</p></div>
+        <div class="work-card">
+            <img src="رابط_صورتك_هنا" alt="تصميم 1">
+            <p>تصميم بنر يوتيوب</p>
+        </div>
+        <div class="work-card">
+            <img src="رابط_صورتك_هنا" alt="تصميم 2">
+            <p>لوجو احترافي</p>
+        </div>
+        <div class="work-card">
+            <img src="رابط_صورتك_هنا" alt="تصميم 3">
+            <p>بوستر فيلم</p>
+        </div>
     </div>
 </div>
 
 <div id="order" class="section">
-    <h2>اطلب تصميمك الآن</h2>
     <div class="order-form">
-        <input type="text" id="userName" placeholder="اسمك الكريم">
-        <input type="text" id="phone" placeholder="رقم تليفونك">
-        <input type="text" id="designTitle" placeholder="اسم التصميم (مثلاً: لوجو قناة)">
-        <select id="designType">
-            <option value="Logo">لوجو</option>
-            <option value="Banner">بنر</option>
-            <option value="Thumbnail">مصغرة فيديو</option>
-            <option value="Other">آخر</option>
-        </select>
-        <textarea id="details" rows="4" placeholder="اكتب تفاصيل طلبك هنا..."></textarea>
-        <button class="btn btn-main" style="width: 100%; border: none;" onclick="sendWhatsApp()">إرسال الطلب عبر واتساب</button>
+        <h3>ابدأ مشروعك الآن</h3>
+        <input type="text" id="userName" placeholder="اسمك">
+        <input type="text" id="designTitle" placeholder="اسم التصميم">
+        <textarea id="details" rows="3" placeholder="تفاصيل الطلب..."></textarea>
+        <button class="btn-main" style="width: 100%;" onclick="sendWhatsApp()">إرسال واتساب</button>
     </div>
 </div>
 
 <script>
     function sendWhatsApp() {
         let name = document.getElementById('userName').value;
-        let phone = document.getElementById('phone').value;
         let title = document.getElementById('designTitle').value;
-        let type = document.getElementById('designType').value;
         let details = document.getElementById('details').value;
+        let myNumber = "4915511928928"; 
 
-        // استبدل الرقم ده برقم تليفونك أنت بالصيغة الدولية (بدون أصفار أو علامة +)
-        let myNumber = "201000000000"; 
-
-        let message = `طلب تصميم جديد 🎨%0A%0A` +
+        let message = `طلب جديد من الموقع 🎨%0A%0A` +
                       `👤 الاسم: ${name}%0A` +
-                      `📞 الموبايل: ${phone}%0A` +
-                      `🏷 العنوان: ${title}%0A` +
-                      `📁 النوع: ${type}%0A` +
+                      `🏷 التصميم: ${title}%0A` +
                       `📝 التفاصيل: ${details}`;
 
         window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
