@@ -6,257 +6,176 @@
     <title>ASHRY NETWORK | 2026 OFFICIAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Orbitron:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap');
 
-        /* ---------------------------------------------------
-           [1] المتغيرات - الثيمات
-        --------------------------------------------------- */
         :root {
-            /* الغامق - الافتراضي */
-            --red: #ff0000;
-            --black: #050505;
-            --card-bg: rgba(15, 15, 15, 0.98);
-            --text: #fff;
-            --input-bg: #000;
-            --border: #1a1a1a;
-            --sharingan-visible: flex;
+            --red: #ff0000; --black: #050505; --card-bg: rgba(15, 15, 15, 0.98);
+            --text: #fff; --input-bg: #000; --border: #1a1a1a; --eye-show: flex;
         }
 
         [data-theme="light"] {
-            /* الفاتح - الموقع العادي */
-            --red: #0066ff;
-            --black: #f0f205; /* خلفية فاتحة */
-            --card-bg: #ffffff;
-            --text: #333;
-            --input-bg: #f9f9f9;
-            --border: #ddd;
-            --sharingan-visible: none; /* إخفاء الشارينجان في الفاتح */
-            --black: #f5f5f5;
+            --red: #0066ff; --black: #f5f5f5; --card-bg: #ffffff;
+            --text: #1a1a1a; --input-bg: #fff; --border: #ddd; --eye-show: none;
         }
 
         * { box-sizing: border-box; outline: none; }
         body, html {
-            margin: 0; padding: 0;
-            background: var(--black);
-            color: var(--text);
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-            transition: background 0.5s, color 0.5s;
+            margin: 0; padding: 0; background: var(--black); color: var(--text);
+            font-family: 'Cairo', sans-serif; transition: 0.5s; overflow-x: hidden;
         }
 
-        /* ---------------------------------------------------
-           [2] زر تبديل الثيم
-        --------------------------------------------------- */
-        .theme-switcher {
-            position: fixed; top: 20px; left: 20px; z-index: 9999;
+        .theme-btn {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
             background: var(--red); color: #fff; border: none;
-            width: 50px; height: 50px; border-radius: 50%;
-            cursor: pointer; box-shadow: 0 0 15px var(--red);
-            font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            box-shadow: 0 0 15px var(--red); display: flex; align-items: center; justify-content: center;
         }
 
-        /* ---------------------------------------------------
-           [3] الشارينجان الجديدة (الرسم الاحترافي)
-        --------------------------------------------------- */
-        .eye-wrap {
-            height: 100vh; display: var(--sharingan-visible); flex-direction: column;
+        .eye-section {
+            height: 100vh; display: var(--eye-show); flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            position: relative;
         }
 
         .sharingan-svg {
-            width: 250px; height: 250px;
-            filter: drop-shadow(0 0 30px var(--red));
+            width: 250px; height: 250px; filter: drop-shadow(0 0 30px var(--red));
             animation: rotateEye 20s linear infinite;
         }
-
         @keyframes rotateEye { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .hero-title {
-            font-family: 'Orbitron', sans-serif; font-size: clamp(3rem, 15vw, 6.5rem);
-            font-weight: 900; margin: 20px 0; letter-spacing: 12px;
-            background: linear-gradient(to bottom, var(--text) 40%, var(--red));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif; font-size: clamp(3rem, 15vw, 6rem);
+            font-weight: 900; background: linear-gradient(to bottom, var(--text) 40%, var(--red));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0;
         }
 
-        /* ---------------------------------------------------
-           [4] الهيكل العام
-        --------------------------------------------------- */
-        .mist-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -10; background: radial-gradient(circle at 50% 50%, #1a0000 0%, var(--black) 100%);
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 20px; }
+        .box-head { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .box-body { max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; padding: 0 25px; }
+        .box.open .box-body { max-height: 1000px; padding-bottom: 25px; }
 
-        .main-content { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-
-        .section-box {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 25px; margin-bottom: 35px; overflow: hidden;
-            transition: var(--transition);
-        }
-        .section-box:hover { border-color: var(--red); }
-
-        .section-trigger {
-            padding: 35px; cursor: pointer; display: flex; align-items: center;
-            justify-content: space-between;
-        }
-
-        .section-body {
-            max-height: 0; overflow: hidden; transition: max-height 1s ease;
-            padding: 0 35px;
-        }
-        .section-box.open .section-body { max-height: 2500px; padding: 40px 35px; }
-
-        .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
+        label { color: var(--red); font-size: 0.85rem; font-weight: bold; display: block; margin-bottom: 5px; }
         input, select, textarea {
-            padding: 18px; background: var(--input-bg); border: 1px solid var(--border);
-            border-radius: 12px; color: var(--text); font-family: 'Cairo';
+            width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--text); font-family: 'Cairo'; margin-bottom: 10px;
+        }
+        .btn-send {
+            width: 100%; padding: 15px; background: var(--red); color: #fff;
+            border: none; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s;
         }
 
-        .btn-order {
-            width: 100%; padding: 22px; background: var(--red);
-            color: #fff; border: none; border-radius: 12px; font-weight: 900;
-            cursor: pointer; transition: 0.3s;
-        }
-
-        /* ---------------------------------------------------
-           [5] التعليقات
-        --------------------------------------------------- */
-        .review-card {
-            background: var(--card-bg); padding: 20px; border-radius: 15px;
-            margin-bottom: 15px; border-right: 4px solid var(--red);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        .rev-card { background: var(--card-bg); padding: 15px; border-radius: 12px; margin-bottom: 10px; border-right: 4px solid var(--red); }
     </style>
 </head>
 <body data-theme="dark">
 
-    <button class="theme-switcher" onclick="toggleTheme()">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
+<button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
 
-    <div class="mist-container"></div>
+<section class="eye-section">
+    <svg class="sharingan-svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" fill="#000"/>
+        <circle cx="50" cy="50" r="45" fill="#ff0000"/>
+        <path d="M 50 15 A 35 35 0 1 0 50 85 A 35 35 0 1 0 50 15" fill="none" stroke="#000" stroke-width="7"/>
+        <circle cx="50" cy="15" r="7" fill="#000"/><circle cx="20" cy="68" r="7" fill="#000"/><circle cx="80" cy="68" r="8" fill="#000"/>
+        <circle cx="50" cy="50" r="10" fill="#000"/>
+    </svg>
+    <h1 class="hero-title">ASHRY</h1>
+</section>
 
-    <section class="eye-wrap">
-        <svg class="sharingan-svg" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="#000"/>
-            <circle cx="50" cy="50" r="45" fill="#ff0000"/>
-            <path d="M 50 15 A 35 35 0 1 0 50 85 A 35 35 0 1 0 50 15" fill="none" stroke="#000" stroke-width="8"/>
-            <circle cx="50" cy="15" r="8" fill="#000"/>
-            <circle cx="20" cy="68" r="8" fill="#000"/>
-            <circle cx="80" cy="68" r="8" fill="#000"/>
-            <circle cx="50" cy="50" r="10" fill="#000"/>
-        </svg>
-
-        <h1 class="hero-title">ASHRY</h1>
-    </section>
-
-    <div class="main-content">
-        <div class="section-box">
-            <div class="section-trigger" onclick="toggle(this)">
-                <h2>🎮 عشري ستور | ASHRY STORE</h2>
-                <span>SERVICE_01</span>
+<div class="container">
+    <div class="box">
+        <div class="box-head" onclick="toggle(this)"><h2>🎮 عشري ستور</h2><i class="fas fa-plus"></i></div>
+        <div class="box-body">
+            <div class="grid">
+                <div><label>الاسم</label><input type="text" id="st_name"></div>
+                <div><label>اللعبة</label><select id="st_game"><option>ببجي</option><option>فري فاير</option><option>إي فوتبول</option></select></div>
+                <div><label>ID</label><input type="text" id="st_id"></div>
+                <div><label>الكمية</label><input type="number" id="st_qty"></div>
             </div>
-            <div class="section-body">
-                <div class="input-grid">
-                    <input type="text" placeholder="الاسم الكامل">
-                    <input type="text" placeholder="رقم الواتساب">
-                    <button class="btn-order">اطلب الآن ⚡</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="reviews-wrap">
-            <h2 style="text-align: center; font-family: 'Orbitron'; margin-bottom: 40px;">SHINOBI REVIEWS</h2>
-            <div id="fake-reviews"></div>
-            <div id="reviews-list"></div>
-            
-            <div class="input-grid" style="margin-top: 50px;">
-                <input type="text" id="rev_name" placeholder="اسمك">
-                <textarea id="rev_text" placeholder="رأيك في الخدمة..."></textarea>
-                <button class="btn-order" onclick="addReview()">نشر تعليقك</button>
-            </div>
+            <button class="btn-send" onclick="send('Store')">طلب شحن</button>
         </div>
     </div>
 
-    <script>
-        // 1. نظام تبديل الثيمات
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('theme-icon');
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                icon.className = 'fas fa-sun';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-moon';
-            }
-        }
+    <div class="box">
+        <div class="box-head" onclick="toggle(this)"><h2>🎨 عشري ديزاين</h2><i class="fas fa-plus"></i></div>
+        <div class="box-body">
+            <div class="grid">
+                <div><label>اسم البراند</label><input type="text" id="ds_brand"></div>
+                <div><label>النوع</label><select id="ds_type"><option>لوجو ملابس</option><option>لوجو 3D</option></select></div>
+                <div style="grid-column: 1/-1"><label>وصف الفكرة</label><textarea id="ds_desc"></textarea></div>
+            </div>
+            <button class="btn-send" onclick="send('Design')">بدأ التصميم</button>
+        </div>
+    </div>
 
-        // 2. قائمة التعليقات الوهمية (20 اسم حقيقي)
-        const fakeData = [
-            {n: "أحمد منصور", t: "والله العظيم شحنلي الشدات في أقل من 5 دقائق، ثقة يا عشري."},
-            {n: "محمود الصعيدي", t: "أفضل سيرفر تعاملت معاه، والديزاينر فنان بجد."},
-            {n: "سارة حسن", t: "لوجو البراند بتاعي طلع تحفة، تسلم إيديك يا بطل."},
-            {n: "كريم الجارحي", t: "خدمات السيبراني عندكم مفيش منها اتنين، حليتولي مشكلة الحساب بسرعة."},
-            {n: "ياسين العبد", t: "شحنت كوينز إي فوتبول ووصلت في ثواني، أنصح الكل بيهم."},
-            {n: "عمر خالد", t: "الأكاديمية شرحها مبسط جداً، استفدت كتير من كورس البايثون."},
-            {n: "إبراهيم ناصر", t: "تعامل راقي وسرعة في التنفيذ، الله يباركلك يا عشري."},
-            {n: "يوسف ممدوح", t: "كنت خايف في الأول بس فعلاً طلعوا قد الثقة."},
-            {n: "عبد الله علي", t: "أقوى بنر يوتيوب عملته في حياتي كان هنا."},
-            {n: "مينا نبيل", t: "خدمة استرجاع الحسابات عندهم جبارة، رجعت حسابي بعد سنة."},
-            {n: "أسامة رجب", t: "الأسعار مناسبة جداً مقارنة بالمنافسين."},
-            {n: "حازم إمام", t: "عاش يا وحش، الشارينجان في الموقع هيبة."},
-            {n: "مصطفى قمر", t: "كل اللي بتمناه بلاقيه في عشري ستور، شكراً ليكم."},
-            {n: "نور الدين", t: "الدعم الفني بيرد بسرعة جداً، دي أهم حاجة عندي."},
-            {n: "خالد وليد", t: "طلبت تصميم أكياس لبراند الملابس وطلعت عالمية."},
-            {n: "هاني سلامة", t: "تجربة ممتازة، الشغل كله بروفيشنال."},
-            {n: "زياد طارق", t: "سرعة البرق في شحن الجواهر، برافو."},
-            {n: "طارق يحيى", t: "موقع مرتب وسهل الاستخدام، والخدمات واضحة."},
-            {n: "عزت أبو عوف", t: "أفضل تجربة شحن أونلاين في 2026."},
-            {n: "رمضان صبحي", t: "تطور كبير يا عشري، بالتوفيق دايماً."}
-        ];
+    <div class="box">
+        <div class="box-head" onclick="toggle(this)"><h2>🛡️ السيبراني</h2><i class="fas fa-plus"></i></div>
+        <div class="box-body">
+            <div class="grid">
+                <div><label>الخدمة</label><select id="cy_type"><option>تأمين</option><option>سحب بيانات</option></select></div>
+                <div style="grid-column: 1/-1"><label>المتطلبات</label><textarea id="cy_req"></textarea></div>
+            </div>
+            <button class="btn-send" onclick="send('Cyber')">تنفيذ الآن</button>
+        </div>
+    </div>
 
-        // 3. تشغيل الوظائف عند التحميل
-        document.addEventListener('DOMContentLoaded', function() {
-            // رص التعليقات الوهمية
-            const container = document.getElementById('fake-reviews');
-            fakeData.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'review-card';
-                div.innerHTML = `<strong>${item.n}:</strong> <p style="margin:5px 0 0">${item.t}</p>`;
-                container.appendChild(div);
-            });
+    <div class="box">
+        <div class="box-head" onclick="toggle(this)"><h2>📚 الأكاديمية</h2><i class="fas fa-plus"></i></div>
+        <div class="box-body">
+            <div class="grid">
+                <div><label>الكورس</label><select id="ac_course"><option>هكر أخلاقي</option><option>برمجة</option></select></div>
+                <div><label>الاسم المستعار</label><input type="text" id="ac_nick"></div>
+            </div>
+            <button class="btn-send" onclick="send('Academy')">حجز مكان</button>
+        </div>
+    </div>
 
-            // تحميل تعليقات المستخدم الحقيقية
-            const saved = JSON.parse(localStorage.getItem('ashry_comments')) || [];
-            saved.forEach(item => render(item.name, item.text));
+    <div style="margin-top: 40px;">
+        <h2 style="text-align: center; color: var(--red);">REVIEWS</h2>
+        <div id="fake-list"></div>
+        <div id="user-list"></div>
+        <input type="text" id="rn" placeholder="اسمك">
+        <textarea id="rt" placeholder="رأيك..."></textarea>
+        <button class="btn-order btn-send" onclick="addR()">نشر</button>
+    </div>
+</div>
+
+<script>
+    function toggleTheme() {
+        const b = document.body;
+        b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    }
+    function toggle(el) { el.parentElement.classList.toggle('open'); }
+    
+    function send(service) {
+        let msg = `طلب خدمة ${service}:%0A`;
+        if(service === 'Store') msg += `الاسم: ${document.getElementById('st_name').value}%0Aاللعبة: ${document.getElementById('st_game').value}%0Aالـ ID: ${document.getElementById('st_id').value}%0Aالكمية: ${document.getElementById('st_qty').value}`;
+        if(service === 'Design') msg += `البراند: ${document.getElementById('ds_brand').value}%0Aالوصف: ${document.getElementById('ds_desc').value}`;
+        window.open(`https://wa.me/201038760809?text=${msg}`, '_blank');
+    }
+
+    const fakes = [
+        {n:"أحمد", t:"شحن سريع"}, {n:"مصطفى", t:"شغل احترافي"}, {n:"سارة", t:"ممتاز"}, {n:"عمر", t:"ثقة"}, {n:"كريم", t:"رجعت حسابي"}, 
+        {n:"ياسين", t:"عاش"}, {n:"إبراهيم", t:"لوجو روعة"}, {n:"خالد", t:"سرعة"}, {n:"نور", t:"أنصح به"}, {n:"يوسف", t:"بوت قوي"},
+        {n:"حازم", t:"جامد"}, {n:"رمضان", t:"رائع"}, {n:"زياد", t:"أمان"}, {n:"هاني", t:"بطل"}, {n:"طارق", t:"تعليمي"}, 
+        {n:"عزت", t:"صادق"}, {n:"مينا", t:"فنان"}, {n:"أسامة", t:"عالمي"}, {n:"وائل", t:"جيد جدا"}, {n:"سامي", t:"توب"}
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const c = document.getElementById('fake-list');
+        fakes.forEach(f => {
+            const d = document.createElement('div'); d.className = 'rev-card';
+            d.innerHTML = `<strong>${f.n}:</strong> ${f.t}`; c.appendChild(d);
         });
+    });
 
-        function toggle(el) {
-            el.parentElement.classList.toggle('open');
-        }
-
-        function addReview() {
-            const name = document.getElementById('rev_name').value;
-            const text = document.getElementById('rev_text').value;
-            if(!name || !text) return;
-            render(name, text);
-            const saved = JSON.parse(localStorage.getItem('ashry_comments')) || [];
-            saved.push({name, text});
-            localStorage.setItem('ashry_comments', JSON.stringify(saved));
-            document.getElementById('rev_name').value = '';
-            document.getElementById('rev_text').value = '';
-        }
-
-        function render(name, text) {
-            const div = document.createElement('div');
-            div.className = 'review-card';
-            div.style.borderColor = "#00ff00"; // تمييز تعليق المستخدم الحقيقي
-            div.innerHTML = `<strong>${name} (أنت):</strong> <p style="margin:5px 0 0">${text}</p>`;
-            document.getElementById('reviews-list').prepend(div);
-        }
-    </script>
+    function addR() {
+        const n = document.getElementById('rn').value, t = document.getElementById('rt').value;
+        if(!n || !t) return;
+        const d = document.createElement('div'); d.className = 'rev-card'; d.style.borderColor = "#4caf50";
+        d.innerHTML = `<strong>${n}:</strong> ${t}`; document.getElementById('user-list').prepend(d);
+    }
+</script>
 </body>
 </html>
