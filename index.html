@@ -3,281 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHRY NETWORK | الإمبراطورية العظمى</title>
+    <title>ASHRY NETWORK | EMPIRE OF SHINOBI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Orbitron:wght@500;700;900&family=Permanent+Marker&display=swap');
 
+        /* 1. المتغيرات الأساسية (The Core) */
         :root {
-            --red: #ff0000;
-            --dark-blood: #4a0000;
-            --deep-void: #050505;
-            --gold: #ffd700;
+            --blood-red: #8a0000;
+            --sharingan-red: #ff0000;
+            --deep-black: #050505;
+            --gold-leaf: #d4af37;
+            --glass-bg: rgba(10, 10, 10, 0.95);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* 2. تنسيق الهيكل (Layout) */
+        * { box-sizing: border-box; outline: none; }
         body, html {
             margin: 0; padding: 0;
-            background: var(--deep-void);
-            color: #eee;
+            background-color: var(--deep-black);
+            color: #ffffff;
             font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* 🌌 خلفية الأنمي المتحركة */
-        .universe-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
+        /* 3. الخلفية الأسطورية المتحركة (The Living Background) */
+        .infinite-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10;
+            background: radial-gradient(circle at center, #1e0000 0%, #000 100%);
         }
 
-        .akatsuki-cloud {
-            position: fixed; width: 350px; height: 180px;
-            background: var(--red); filter: blur(100px);
-            opacity: 0.15; border-radius: 50%; z-index: -1;
-            animation: cloudMove 30s infinite alternate ease-in-out;
+        /* نظام السحب (أكاتسكي ستايل) */
+        .akatsuki-cloud-system {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -5; pointer-events: none; opacity: 0.2;
         }
 
-        @keyframes cloudMove { from { transform: translate(-20%, -20%); } to { transform: translate(40%, 40%); } }
+        .cloud {
+            position: absolute; background: var(--sharingan-red);
+            filter: blur(100px); border-radius: 50%;
+            animation: cloudFloat 20s infinite alternate ease-in-out;
+        }
+        .cloud-1 { width: 400px; height: 200px; top: 10%; left: -10%; }
+        .cloud-2 { width: 300px; height: 300px; bottom: 10%; right: -5%; animation-delay: -5s; }
 
-        /* ⌬ المانجيكيو شارينجان الماسية */
-        .sharingan-master {
-            width: 200px; height: 200px;
-            position: relative; margin-bottom: 30px;
-            animation: sharinganSpin 12s linear infinite;
-            filter: drop-shadow(0 0 30px var(--red));
+        @keyframes cloudFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
         }
 
-        @keyframes sharinganSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* ⚔️ الواجهة الرئيسية (Hero) */
-        .hero {
+        /* 4. الشارينجان المتطورة (The Advanced Mangekyou) */
+        .sharingan-section {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
         }
 
-        .hero h1 {
-            font-family: 'Orbitron'; font-size: clamp(3rem, 12vw, 6rem);
-            margin: 0; text-shadow: 0 0 40px var(--red), 0 0 10px #fff;
-            letter-spacing: 5px;
+        .mangekyou-eye {
+            width: 220px; height: 220px; background: var(--sharingan-red);
+            border-radius: 50%; border: 6px solid #000; position: relative;
+            box-shadow: 0 0 50px var(--sharingan-red), inset 0 0 30px #000;
+            animation: sharinganRotate 15s linear infinite;
+            cursor: pointer;
         }
 
-        .hero p { font-size: 1.4rem; color: #888; margin-top: 10px; }
-
-        /* 📱 الروابط الاجتماعية */
-        .social-bar {
-            display: flex; gap: 25px; margin: 30px 0;
+        .mangekyou-eye::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle, #000 12%, transparent 13%),
+                conic-gradient(from 0deg, transparent 0 30deg, #000 30deg 60deg, transparent 60deg 120deg, #000 120deg 150deg, transparent 150deg 240deg, #000 240deg 270deg, transparent 270deg);
+            border-radius: 50%;
+            clip-path: circle(48% at 50% 50%);
         }
 
-        .social-bar a {
-            font-size: 30px; color: white; transition: 0.4s;
-            text-shadow: 0 0 10px var(--red);
+        .mangekyou-eye::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 30px; height: 30px; background: #000;
+            border-radius: 50%; transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px #000;
         }
 
-        .social-bar a:hover { transform: scale(1.3) rotate(360deg); color: var(--red); }
+        @keyframes sharinganRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* 🛠️ حاوية الخدمات */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-
-        details {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--dark-blood);
-            border-radius: 20px; margin-bottom: 25px;
-            overflow: hidden; backdrop-filter: blur(15px);
-            transition: 0.4s;
+        /* 5. العناوين والنصوص (Typography) */
+        .hero-title {
+            font-family: 'Orbitron', sans-serif; font-size: clamp(3rem, 15vw, 7rem);
+            margin: 20px 0; color: #fff; text-transform: uppercase;
+            letter-spacing: 10px; font-weight: 900;
+            text-shadow: 4px 4px 0px var(--blood-red), 0 0 30px var(--sharingan-red);
         }
 
-        details[open] { border-color: var(--red); box-shadow: 0 0 30px rgba(255,0,0,0.15); }
-
-        summary {
-            padding: 30px; font-size: 1.6rem; font-weight: 900;
-            cursor: pointer; list-style: none; display: flex; align-items: center; gap: 20px;
-            background: linear-gradient(90deg, rgba(255,0,0,0.05), transparent);
+        .hero-subtitle {
+            font-size: 1.5rem; color: #aaa; font-weight: 300;
+            max-width: 600px; line-height: 1.6;
         }
 
-        summary::before { content: "⌬"; color: var(--red); font-size: 2rem; }
-
-        /* 📋 النماذج (Forms) */
-        .form-grid {
-            padding: 35px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px; border-top: 1px solid #222;
+        /* 6. الشبكة الاجتماعية (Social Grid) */
+        .social-container {
+            display: flex; gap: 25px; margin-top: 40px;
+        }
+        .social-btn {
+            width: 70px; height: 70px; border: 2px solid var(--sharingan-red);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 1.8rem; color: #fff;
+            transition: var(--transition); background: rgba(255,0,0,0.05);
+            text-decoration: none;
+        }
+        .social-btn:hover {
+            background: var(--sharingan-red); transform: translateY(-10px) rotate(360deg);
+            box-shadow: 0 0 40px var(--sharingan-red);
         }
 
-        .input-group { display: flex; flex-direction: column; gap: 10px; }
+        /* 7. الأقسام المنهارة (Accordion Sections) */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
 
-        label { color: var(--red); font-weight: bold; font-size: 0.95rem; }
+        .empire-section {
+            background: var(--glass-bg); border: 1px solid #222;
+            border-radius: 30px; margin-bottom: 40px; overflow: hidden;
+            transition: var(--transition); position: relative;
+        }
+        .empire-section:hover { border-color: var(--sharingan-red); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+        .empire-header {
+            padding: 40px; cursor: pointer; display: flex;
+            align-items: center; justify-content: space-between;
+            background: linear-gradient(to left, rgba(255,0,0,0.1), transparent);
+        }
+        .empire-header h2 { margin: 0; font-size: 2rem; font-weight: 900; color: var(--sharingan-red); }
+        .empire-header i { font-size: 1.5rem; transition: 0.3s; }
+
+        .empire-body { padding: 0 40px; max-height: 0; overflow: hidden; transition: max-height 0.8s ease-out; }
+        .empire-section.active .empire-body { max-height: 5000px; padding: 40px; }
+        .empire-section.active .empire-header i { transform: rotate(180deg); }
+
+        /* 8. النماذج الضخمة (Mega Forms) */
+        .mega-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .form-group { display: flex; flex-direction: column; gap: 12px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+
+        label { font-weight: 700; color: #ddd; display: flex; align-items: center; gap: 10px; }
+        label i { color: var(--sharingan-red); }
 
         input, select, textarea {
-            padding: 16px; background: #000; border: 1px solid #333;
-            border-radius: 12px; color: #fff; font-family: 'Cairo';
-            transition: 0.3s; font-size: 1rem;
+            padding: 18px; background: #000; border: 1px solid #333;
+            border-radius: 15px; color: #fff; font-family: 'Cairo';
+            font-size: 1rem; transition: 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--sharingan-red); box-shadow: 0 0 15px rgba(255,0,0,0.2);
+            background: #050505;
         }
 
-        input:focus { border-color: var(--red); outline: none; box-shadow: 0 0 15px var(--dark-blood); }
-
-        .btn-diamond {
-            grid-column: 1 / -1; padding: 22px;
-            background: linear-gradient(45deg, var(--dark-blood), var(--red));
-            color: white; border: none; border-radius: 12px;
-            font-weight: 900; font-size: 1.3rem; cursor: pointer;
-            transition: 0.4s; text-transform: uppercase;
+        .btn-submit-diamond {
+            grid-column: 1 / -1; padding: 25px;
+            background: linear-gradient(45deg, #440000, #ff0000);
+            color: #fff; border: none; border-radius: 15px;
+            font-size: 1.4rem; font-weight: 900; cursor: pointer;
+            transition: var(--transition); text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); margin-top: 20px;
+        }
+        .btn-submit-diamond:hover {
+            letter-spacing: 8px; transform: scale(1.02);
+            box-shadow: 0 0 50px var(--sharingan-red);
         }
 
-        .btn-diamond:hover { letter-spacing: 5px; transform: scale(1.01); box-shadow: 0 0 40px var(--red); }
-
-        /* ⭐ قسم التعليقات العالمي */
-        .comment-section {
-            margin-top: 80px; padding: 40px;
-            background: rgba(255,255,255,0.02); border-radius: 30px;
+        /* 9. قسم التعليقات اللانهائي (Infinite Comments) */
+        .comments-wrap { margin-top: 100px; padding: 50px; background: rgba(255,255,255,0.01); border-radius: 40px; }
+        .comment-item {
+            background: #0c0c0c; padding: 30px; border-radius: 20px;
+            margin-bottom: 25px; border-right: 6px solid var(--sharingan-red);
+            position: relative; animation: fadeIn 0.8s ease;
         }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        footer { text-align: center; padding: 60px; color: #444; border-top: 1px solid #111; font-size: 0.9rem; }
+        .comment-user { font-weight: 900; color: var(--sharingan-red); font-size: 1.2rem; margin-bottom: 5px; }
+        .comment-date { font-size: 0.8rem; color: #555; }
+        .comment-text { margin-top: 15px; line-height: 1.7; color: #ccc; }
 
-        /* 🎭 أيقونات الأنمي في الأركان */
-        .anime-icon { position: fixed; opacity: 0.05; z-index: -1; filter: grayscale(1); pointer-events: none; }
+        .add-comment-box { margin-top: 50px; border-top: 1px solid #222; padding-top: 40px; }
+
+        /* 10. التذييل (Footer) */
+        footer {
+            padding: 80px 20px; text-align: center; border-top: 1px solid #111;
+            background: #020202; position: relative;
+        }
+        .footer-logo { font-family: 'Orbitron'; font-size: 2rem; color: var(--sharingan-red); margin-bottom: 20px; }
+        
     </style>
 </head>
 <body>
 
-    <div class="universe-bg"></div>
-    <div class="akatsuki-cloud" style="top:5%; left:5%;"></div>
-    <div class="akatsuki-cloud" style="bottom:5%; right:5%;"></div>
+    <div class="infinite-background"></div>
+    <div class="akatsuki-cloud-system">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+    </div>
 
-    <i class="fab fa-fort-awesome anime-icon" style="top:10%; right:10%; font-size: 100px;"></i>
-
-    <section class="hero">
-        <div class="sharingan-master">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="48" fill="#ff0000" stroke="#000" stroke-width="2"/>
-                <circle cx="50" cy="50" r="10" fill="#000"/>
-                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(0 50 50)"/>
-                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(60 50 50)"/>
-                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(120 50 50)"/>
-                <circle cx="50" cy="50" r="15" fill="none" stroke="#000" stroke-width="2"/>
-            </svg>
-        </div>
-        <h1>ASHRY NETWORK</h1>
-        <p>THE ULTIMATE SHINOBI EMPIRE | عـشـري</p>
+    <section class="sharingan-section" id="home">
+        <div class="mangekyou-eye" onclick="alert('لقد وقعت في الغينجيتسو!')"></div>
+        <h1 class="hero-title">ASHRY</h1>
+        <p class="hero-subtitle">تحكم في الواقع، اختر خدمتك، واترك الباقي لقوة الأوتشيها. نحن لا نصنع مواقع، نحن نصنع أساطير.</p>
         
-        <div class="social-bar">
-            <a href="https://wa.me/201038760809"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div class="social-container">
+            <a href="https://wa.me/201038760809" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
         </div>
-        
-        <a href="#explore" style="color:white; text-decoration:none; border:1px solid var(--red); padding:12px 40px; border-radius:50px; background:rgba(255,0,0,0.1)">اكتشف القوة ⌬</a>
     </section>
 
-    <div id="explore" class="container">
+    <div class="main-container">
 
-        <details>
-            <summary>🎮 عشري ستور | ASHRY STORE (All Games)</summary>
-            <div class="form-grid">
-                <div class="input-group"><label>الاسم بالكامل</label><input type="text" id="st_name"></div>
-                <div class="input-group"><label>رقم الواتساب</label><input type="text" id="st_phone"></div>
-                <div class="input-group"><label>الجيميل</label><input type="email" id="st_mail"></div>
-                <div class="input-group">
-                    <label>اللعبة أو البطاقة</label>
-                    <select id="st_game">
-                        <optgroup label="العاب موبايل">
-                            <option>شدات ببجي (UC)</option><option>جواهر فري فاير</option><option>روبوكس (Roblox)</option>
-                            <option>كوينز إي فوتبول</option><option>جواهر لودو ستار</option><option>ماس يلا شات</option>
-                        </optgroup>
-                        <optgroup label="بطاقات رقمية">
-                            <option>ديسكورد نيترو</option><option>بطاقات جوجل بلاي</option><option>بطاقات آيتونز</option>
-                            <option>بلايستيشن بلس</option><option>بطاقات ستيم</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <div class="input-group"><label>المعرف (ID)</label><input type="text" id="st_id"></div>
-                <div class="input-group"><label>الكمية المطلوبة</label><input type="number" id="st_qty"></div>
-                <button class="btn-diamond" onclick="sendWA('Store')">تنفيذ الشحن الفوري ⚡</button>
+        <div class="empire-section" id="store">
+            <div class="empire-header" onclick="toggleSection(this)">
+                <h2>🎮 عشري ستور | النخبة للشحن</h2>
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </details>
-
-        <details>
-            <summary>🎨 عشري ديزاين | ASHRY DESIGN (Branding)</summary>
-            <div class="form-grid">
-                <div class="input-group"><label>الاسم</label><input type="text" id="ds_name"></div>
-                <div class="input-group">
-                    <label>نوع التصميم المطلوب</label>
-                    <select id="ds_type">
-                        <option>لوجو براند ملابس (3D)</option><option>لوجو قيمنق احترافي</option>
-                        <option>بنر يوتيوب / فيسبوك</option><option>تصميم أكياس وشيكات</option>
-                        <option>موشن جرافيك (فيديو)</option><option>فيكتور آرت</option>
-                    </select>
+            <div class="empire-body">
+                <div class="mega-form">
+                    <div class="form-group"><label><i class="fas fa-user"></i> الاسم الكامل</label><input type="text" placeholder="أدخل اسمك الثلاثي"></div>
+                    <div class="form-group"><label><i class="fas fa-envelope"></i> البريد الإلكتروني</label><input type="email" placeholder="example@gmail.com"></div>
+                    <div class="form-group"><label><i class="fab fa-whatsapp"></i> رقم الهاتف</label><input type="text" placeholder="+2010xxxxxxxx"></div>
+                    <div class="form-group">
+                        <label><i class="fas fa-gamepad"></i> الخدمة المطلوبة</label>
+                        <select>
+                            <option>شدات ببجي موبايل (عالمية)</option>
+                            <option>جواهر فري فاير (ID)</option>
+                            <option>روبوكس روبلوكس (سريع)</option>
+                            <option>كوينز إي فوتبول 2026</option>
+                            <option>نقاط فالورانت</option>
+                            <option>جواهر لودو ستار</option>
+                            <option>ديسكورد نيترو (سنة/شهر)</option>
+                            <option>بطاقات بلايستيشن / إكس بوكس</option>
+                            <option>شحن تيك توك كوينز</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label><i class="fas fa-fingerprint"></i> معرف الحساب (ID)</label><input type="text" placeholder="123456789"></div>
+                    <div class="form-group"><label><i class="fas fa-layer-group"></i> الكمية / الباقة</label><input type="number" placeholder="مثال: 600"></div>
+                    <div class="form-group full-width"><label><i class="fas fa-sticky-note"></i> ملاحظات إضافية</label><textarea rows="3" placeholder="أي تفاصيل أخرى تريد إضافتها..."></textarea></div>
+                    <button class="btn-submit-diamond" onclick="sendOrder('ستور')">تفعيل الشحن الفوري ⚡</button>
                 </div>
-                <div class="input-group"><label>اسم البراند</label><input type="text" id="ds_brand"></div>
-                <div class="input-group" style="grid-column: 1/-1;"><label>وصف تخيلك للتصميم</label><textarea rows="4" id="ds_desc"></textarea></div>
-                <button class="btn-diamond" onclick="sendWA('Design')">بدأ الجلسة الإبداعية 🖼️</button>
             </div>
-        </details>
+        </div>
 
-        <details>
-            <summary>🌐 الويب & الأمن السيبراني | CYBER SERVICES</summary>
-            <div class="form-grid">
-                <div class="input-group"><label>الاسم</label><input type="text" id="web_name"></div>
-                <div class="input-group">
-                    <label>الخدمة المطلوبة</label>
-                    <select id="web_type">
-                        <option>برمجة متجر إلكتروني</option><option>برمجة بوت تليجرام</option>
-                        <option>تأمين حسابات شامل</option><option>استرجاع حسابات</option>
-                        <option>اختبار اختراق مواقع</option><option style="color:red">سحب بيانات (سرية)</option>
-                    </select>
+        <div class="empire-section" id="design">
+            <div class="empire-header" onclick="toggleSection(this)">
+                <h2>🎨 عشري ديزاين | استوديو الإبداع</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="empire-body">
+                <div class="mega-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-paint-brush"></i> نوع العمل الفني</label>
+                        <select>
+                            <option>لوجو براند ملابس احترافي</option>
+                            <option>هوية بصرية متكاملة</option>
+                            <option>تصميم أكياس وبوكسات 3D</option>
+                            <option>بنر يوتيوب / تويتش</option>
+                            <option>موشن جرافيك فيديو</option>
+                            <option>تصميم بوستات سوشيال ميديا</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label><i class="fas fa-pen-nib"></i> اسم البراند / النص</label><input type="text" placeholder="الاسم الذي سيظهر في التصميم"></div>
+                    <div class="form-group"><label><i class="fas fa-palette"></i> الألوان المفضلة</label><input type="text" placeholder="مثال: أسود وذهبي"></div>
+                    <div class="form-group full-width"><label><i class="fas fa-align-left"></i> وصف الفكرة</label><textarea rows="5" placeholder="اشرح لنا خيالك لنحوله لواقع..."></textarea></div>
+                    <button class="btn-submit-diamond" onclick="sendOrder('ديزاين')">بدأ الجلسة الإبداعية 🖼️</button>
                 </div>
-                <div class="input-group" style="grid-column: 1/-1;"><label>تفاصيل تقنية</label><textarea rows="3" id="web_desc"></textarea></div>
-                <button class="btn-diamond" onclick="sendWA('Cyber/Web')">تواصل مع المبرمج ⚔️</button>
             </div>
-        </details>
+        </div>
 
-        <details>
-            <summary>📚 عشري أكاديمي | ACADEMY (Courses)</summary>
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>المسار التعليمي</label>
-                    <select id="ac_type">
-                        <option>احتراف الهكر الأخلاقي</option><option>برمجة بايثون من الصفر</option>
-                        <option>احتراف أدوبي فوتوشوب</option><option>أسرار الربح من الدروبشيبينج</option>
-                    </select>
+        <div class="empire-section" id="cyber">
+            <div class="empire-header" onclick="toggleSection(this)">
+                <h2>🛡️ عشري أكاديمي | السايبر والبرمجة</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="empire-body">
+                <div class="mega-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-user-shield"></i> المسار المطلوب</label>
+                        <select>
+                            <option>دورة الهكر الأخلاقي الشاملة</option>
+                            <option>دورة برمجة المواقع (Full Stack)</option>
+                            <option>دورة صناعة بوتات التليجرام</option>
+                            <option>خدمة تأمين الحسابات ضد الاختراق</option>
+                            <option>اختبار اختراق المواقع والشركات</option>
+                            <option style="color:red">خدمة استرجاع البيانات (خاصة)</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label><i class="fas fa-id-card"></i> الاسم المستعار / الحقيقي</label><input type="text"></div>
+                    <div class="form-group full-width"><label><i class="fas fa-code"></i> تفاصيل إضافية</label><textarea rows="3"></textarea></div>
+                    <button class="btn-submit-diamond" onclick="sendOrder('أكاديمي/سايبر')">دخول النطاق الآمن ⚔️</button>
                 </div>
-                <div class="input-group"><label>رقمك</label><input type="text" id="ac_phone"></div>
-                <button class="btn-diamond" onclick="sendWA('Academy')">حجز مكانك في الكورس 📖</button>
             </div>
-        </details>
+        </div>
 
-        <div class="comment-section">
-            <h2 style="text-align: center; color: var(--red);">آراء الشينوبي حول العالم ⭐</h2>
-            <p style="text-align:center; color:#555">اضغط بالأسفل لإضافة تعليقك الدائم</p>
-            
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = window.location.href;  
-                    this.page.identifier = 'ashry_network_main'; 
-                };
-                (function() { 
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://ashry-network.disqus.com/embed.js'; // ملاحظة: ستحتاج لإنشاء حساب مجاني على Disqus ووضع اسمك هنا
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
+        <div class="comments-wrap">
+            <h2 style="text-align: center; font-size: 2.5rem; color: #fff;">آراء النخبة ⭐</h2>
+            <div id="comments-container">
+                <div class="comment-item">
+                    <div class="comment-user">ياسين "نينجا"</div>
+                    <div class="comment-date">منذ ساعتين</div>
+                    <div class="comment-text">والله يا جماعة الموقع ده غينجيتسو حقيقي، شحنت اليوسي في ثواني والتعامل فوق الممتاز.</div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-user">أحمد المبرمج</div>
+                    <div class="comment-date">منذ يوم</div>
+                    <div class="comment-text">كورس السايبر سيكيورتي مع عشري نقل تفكيري في البرمجة لمستوى تاني خالص، شكراً جداً.</div>
+                </div>
+            </div>
+
+            <div class="add-comment-box">
+                <h3 style="color: var(--sharingan-red);">أضف بصمتك في الإمبراطورية:</h3>
+                <div class="mega-form">
+                    <div class="form-group"><input type="text" id="rev_name" placeholder="اسمك المستعار"></div>
+                    <div class="form-group"><input type="text" id="rev_rating" placeholder="التقييم (مثلاً: 5/5)"></div>
+                    <div class="form-group full-width"><textarea id="rev_text" rows="3" placeholder="اكتب رأيك الصريح هنا..."></textarea></div>
+                    <button class="btn-submit-diamond" style="padding: 15px;" onclick="addNewComment()">نشر التعليق للأبد ⌬</button>
+                </div>
+            </div>
         </div>
 
     </div>
 
     <footer>
-        <p>⌬ ASHRY NETWORK | UCHIHA POWER ⌬</p>
-        <p>© 2026 جميع الحقوق محفوظة لـ "عـشـري"</p>
+        <div class="footer-logo">ASHRY NETWORK</div>
+        <p>تصميم وبرمجة: إمبراطورية عشري الرقمية &copy; 2026</p>
+        <p style="font-size: 0.7rem; color: #333; margin-top: 20px;">هذا الموقع محمي بقوة المانجيكيو شارينجان - لا تحاول النسخ</p>
     </footer>
 
     <script>
-        function sendWA(section) {
+        // وظيفة فتح وإغلاق الأقسام
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('active');
+        }
+
+        // وظيفة إرسال الطلبات للواتساب
+        function sendOrder(type) {
             const phone = "201038760809";
-            const text = `مرحباً عشري، أريد طلب خدمة من قسم: ${section}`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+            const message = `مرحباً عشري، أريد طلب خدمة من قسم (${type}). لقد جئت من الموقع الرسمي.`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // وظيفة إضافة تعليق جديد (محلياً)
+        function addNewComment() {
+            const name = document.getElementById('rev_name').value;
+            const text = document.getElementById('rev_text').value;
+            if(!name || !text) { alert("من فضلك املأ البيانات!"); return; }
+
+            const container = document.getElementById('comments-container');
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+            newComment.innerHTML = `
+                <div class="comment-user">${name}</div>
+                <div class="comment-date">الآن</div>
+                <div class="comment-text">${text}</div>
+            `;
+            container.prepend(newComment);
+            
+            // مسح الخانات
+            document.getElementById('rev_name').value = '';
+            document.getElementById('rev_text').value = '';
+            alert("تم نشر تعليقك بنجاح في ذاكرة الموقع!");
         }
     </script>
 </body>
