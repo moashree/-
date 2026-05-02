@@ -10,265 +10,275 @@
 
         :root {
             --red: #ff0000;
-            --dark-red: #660000;
-            --black: #080808;
-            --glass: rgba(15, 15, 15, 0.9);
+            --dark-blood: #4a0000;
+            --deep-void: #050505;
+            --gold: #ffd700;
         }
 
         body, html {
             margin: 0; padding: 0;
-            background: var(--black);
-            color: #fff;
+            background: var(--deep-void);
+            color: #eee;
             font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* خلفية الأنمي المتحركة */
-        .bg-animate {
+        /* 🌌 خلفية الأنمي المتحركة */
+        .universe-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at 50% 50%, #1a0000 0%, #000 100%);
-        }
-        .bg-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.3;
+            background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
         }
 
-        /* المانجيكيو شارينجان الأصلية (SVG) */
-        .sharingan-container {
-            width: 180px; height: 180px;
-            position: relative;
-            animation: rotateSharingan 15s linear infinite;
-            filter: drop-shadow(0 0 20px var(--red));
-            margin-bottom: 20px;
+        .akatsuki-cloud {
+            position: fixed; width: 350px; height: 180px;
+            background: var(--red); filter: blur(100px);
+            opacity: 0.15; border-radius: 50%; z-index: -1;
+            animation: cloudMove 30s infinite alternate ease-in-out;
         }
 
-        @keyframes rotateSharingan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes cloudMove { from { transform: translate(-20%, -20%); } to { transform: translate(40%, 40%); } }
 
-        /* الهيرو */
+        /* ⌬ المانجيكيو شارينجان الماسية */
+        .sharingan-master {
+            width: 200px; height: 200px;
+            position: relative; margin-bottom: 30px;
+            animation: sharinganSpin 12s linear infinite;
+            filter: drop-shadow(0 0 30px var(--red));
+        }
+
+        @keyframes sharinganSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* ⚔️ الواجهة الرئيسية (Hero) */
         .hero {
-            height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
         }
 
         .hero h1 {
-            font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 5rem);
-            margin: 10px 0; text-shadow: 0 0 30px var(--red);
+            font-family: 'Orbitron'; font-size: clamp(3rem, 12vw, 6rem);
+            margin: 0; text-shadow: 0 0 40px var(--red), 0 0 10px #fff;
+            letter-spacing: 5px;
         }
 
-        /* الأقسام المنسدلة */
+        .hero p { font-size: 1.4rem; color: #888; margin-top: 10px; }
+
+        /* 📱 الروابط الاجتماعية */
+        .social-bar {
+            display: flex; gap: 25px; margin: 30px 0;
+        }
+
+        .social-bar a {
+            font-size: 30px; color: white; transition: 0.4s;
+            text-shadow: 0 0 10px var(--red);
+        }
+
+        .social-bar a:hover { transform: scale(1.3) rotate(360deg); color: var(--red); }
+
+        /* 🛠️ حاوية الخدمات */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         details {
-            background: var(--glass);
-            border: 1px solid var(--dark-red);
-            border-radius: 15px;
-            margin-bottom: 25px;
-            transition: 0.3s;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid var(--dark-blood);
+            border-radius: 20px; margin-bottom: 25px;
+            overflow: hidden; backdrop-filter: blur(15px);
+            transition: 0.4s;
         }
 
-        details[open] { border-color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+        details[open] { border-color: var(--red); box-shadow: 0 0 30px rgba(255,0,0,0.15); }
 
         summary {
-            padding: 25px; font-size: 1.5rem; font-weight: 900;
-            cursor: pointer; list-style: none; display: flex; align-items: center; gap: 15px;
+            padding: 30px; font-size: 1.6rem; font-weight: 900;
+            cursor: pointer; list-style: none; display: flex; align-items: center; gap: 20px;
+            background: linear-gradient(90deg, rgba(255,0,0,0.05), transparent);
         }
 
-        summary::before { content: "⌬"; color: var(--red); font-size: 1.8rem; }
+        summary::before { content: "⌬"; color: var(--red); font-size: 2rem; }
 
+        /* 📋 النماذج (Forms) */
         .form-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; padding: 30px; border-top: 1px solid #333;
+            padding: 35px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; border-top: 1px solid #222;
         }
 
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .input-group { display: flex; flex-direction: column; gap: 10px; }
 
-        label { color: var(--red); font-weight: bold; font-size: 0.9rem; }
+        label { color: var(--red); font-weight: bold; font-size: 0.95rem; }
 
         input, select, textarea {
-            padding: 15px; background: #000; border: 1px solid #222;
-            border-radius: 10px; color: #fff; font-family: 'Cairo';
-            transition: 0.3s;
+            padding: 16px; background: #000; border: 1px solid #333;
+            border-radius: 12px; color: #fff; font-family: 'Cairo';
+            transition: 0.3s; font-size: 1rem;
         }
 
-        input:focus { border-color: var(--red); outline: none; box-shadow: 0 0 10px var(--dark-red); }
+        input:focus { border-color: var(--red); outline: none; box-shadow: 0 0 15px var(--dark-blood); }
 
-        .btn-submit {
-            grid-column: 1 / -1; padding: 20px;
-            background: linear-gradient(45deg, #800000, #ff0000);
-            color: white; border: none; border-radius: 10px;
-            font-weight: 900; font-size: 1.2rem; cursor: pointer;
+        .btn-diamond {
+            grid-column: 1 / -1; padding: 22px;
+            background: linear-gradient(45deg, var(--dark-blood), var(--red));
+            color: white; border: none; border-radius: 12px;
+            font-weight: 900; font-size: 1.3rem; cursor: pointer;
             transition: 0.4s; text-transform: uppercase;
         }
 
-        .btn-submit:hover { letter-spacing: 3px; transform: scale(1.02); }
+        .btn-diamond:hover { letter-spacing: 5px; transform: scale(1.01); box-shadow: 0 0 40px var(--red); }
 
-        /* نظام التعليقات */
-        .reviews-section { margin-top: 60px; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 20px; }
-        .review-card { background: #111; padding: 20px; border-radius: 12px; margin-bottom: 15px; border-right: 5px solid var(--red); animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        /* ⭐ قسم التعليقات العالمي */
+        .comment-section {
+            margin-top: 80px; padding: 40px;
+            background: rgba(255,255,255,0.02); border-radius: 30px;
+        }
 
-        footer { text-align: center; padding: 50px; color: #444; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 60px; color: #444; border-top: 1px solid #111; font-size: 0.9rem; }
 
+        /* 🎭 أيقونات الأنمي في الأركان */
+        .anime-icon { position: fixed; opacity: 0.05; z-index: -1; filter: grayscale(1); pointer-events: none; }
     </style>
 </head>
 <body>
 
-    <div class="bg-animate"></div>
-    <div class="bg-overlay"></div>
+    <div class="universe-bg"></div>
+    <div class="akatsuki-cloud" style="top:5%; left:5%;"></div>
+    <div class="akatsuki-cloud" style="bottom:5%; right:5%;"></div>
+
+    <i class="fab fa-fort-awesome anime-icon" style="top:10%; right:10%; font-size: 100px;"></i>
 
     <section class="hero">
-        <div class="sharingan-container">
+        <div class="sharingan-master">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="48" fill="#ff0000" stroke="black" stroke-width="1"/>
-                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(0 50 50)"/>
-                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(60 50 50)"/>
-                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(120 50 50)"/>
-                <circle cx="50" cy="50" r="12" fill="#ff0000" stroke="black" stroke-width="2"/>
-                <circle cx="50" cy="50" r="5" fill="black"/>
+                <circle cx="50" cy="50" r="48" fill="#ff0000" stroke="#000" stroke-width="2"/>
+                <circle cx="50" cy="50" r="10" fill="#000"/>
+                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(0 50 50)"/>
+                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(60 50 50)"/>
+                <path d="M50 5 C 35 25, 35 75, 50 95 C 65 75, 65 25, 50 5" fill="#000" transform="rotate(120 50 50)"/>
+                <circle cx="50" cy="50" r="15" fill="none" stroke="#000" stroke-width="2"/>
             </svg>
         </div>
         <h1>ASHRY NETWORK</h1>
-        <p>CONTROL THE DOMAIN | الإمبراطورية الرقمية</p>
+        <p>THE ULTIMATE SHINOBI EMPIRE | عـشـري</p>
         
-        <div style="display:flex; gap:25px; margin:20px; font-size: 28px;">
-            <a href="https://wa.me/201038760809" style="color:white"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/ashry_network" style="color:white"><i class="fab fa-telegram"></i></a>
-            <a href="#" style="color:white"><i class="fab fa-youtube"></i></a>
-            <a href="#" style="color:white"><i class="fab fa-instagram"></i></a>
+        <div class="social-bar">
+            <a href="https://wa.me/201038760809"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
+        
+        <a href="#explore" style="color:white; text-decoration:none; border:1px solid var(--red); padding:12px 40px; border-radius:50px; background:rgba(255,0,0,0.1)">اكتشف القوة ⌬</a>
     </section>
 
-    <div class="container">
+    <div id="explore" class="container">
 
         <details>
-            <summary>🎮 عشري ستور | ASHRY STORE</summary>
+            <summary>🎮 عشري ستور | ASHRY STORE (All Games)</summary>
             <div class="form-grid">
-                <div class="input-group"><label>الاسم الكامل</label><input type="text" id="st_name"></div>
-                <div class="input-group"><label>رقم الهاتف (واتساب)</label><input type="text" id="st_phone"></div>
+                <div class="input-group"><label>الاسم بالكامل</label><input type="text" id="st_name"></div>
+                <div class="input-group"><label>رقم الواتساب</label><input type="text" id="st_phone"></div>
                 <div class="input-group"><label>الجيميل</label><input type="email" id="st_mail"></div>
                 <div class="input-group">
-                    <label>اللعبة / الخدمة</label>
+                    <label>اللعبة أو البطاقة</label>
                     <select id="st_game">
-                        <option>PUBG Mobile (Global/Egypt)</option><option>Free Fire Diamonds</option>
-                        <option>Roblox Robux</option><option>E-Football Coins</option>
-                        <option>Valorant Points</option><option>Discord Nitro</option>
-                        <option>Ludo Star Gems</option><option>8 Ball Pool Cash</option>
-                        <option>TikTok Coins</option><option>PlayStation Cards</option>
+                        <optgroup label="العاب موبايل">
+                            <option>شدات ببجي (UC)</option><option>جواهر فري فاير</option><option>روبوكس (Roblox)</option>
+                            <option>كوينز إي فوتبول</option><option>جواهر لودو ستار</option><option>ماس يلا شات</option>
+                        </optgroup>
+                        <optgroup label="بطاقات رقمية">
+                            <option>ديسكورد نيترو</option><option>بطاقات جوجل بلاي</option><option>بطاقات آيتونز</option>
+                            <option>بلايستيشن بلس</option><option>بطاقات ستيم</option>
+                        </optgroup>
                     </select>
                 </div>
-                <div class="input-group"><label>الآي دي (ID)</label><input type="text" id="st_id"></div>
-                <div class="input-group"><label>الكمية</label><input type="number" id="st_qty"></div>
-                <button class="btn-submit" onclick="send('Store')">إتمام الطلب ⚡</button>
+                <div class="input-group"><label>المعرف (ID)</label><input type="text" id="st_id"></div>
+                <div class="input-group"><label>الكمية المطلوبة</label><input type="number" id="st_qty"></div>
+                <button class="btn-diamond" onclick="sendWA('Store')">تنفيذ الشحن الفوري ⚡</button>
             </div>
         </details>
 
         <details>
-            <summary>🎨 عشري ديزاين | ASHRY DESIGN</summary>
+            <summary>🎨 عشري ديزاين | ASHRY DESIGN (Branding)</summary>
             <div class="form-grid">
                 <div class="input-group"><label>الاسم</label><input type="text" id="ds_name"></div>
                 <div class="input-group">
-                    <label>نوع التصميم</label>
+                    <label>نوع التصميم المطلوب</label>
                     <select id="ds_type">
-                        <option>لوجو براند (Minimalist)</option><option>لوجو قيمنق (Mascot)</option>
-                        <option>بنر يوتيوب / تويتش</option><option>تصميم منتجات وأكياس (3D)</option>
-                        <option>موشن جرافيك (Motion)</option><option>تعديل صور (Retouch)</option>
+                        <option>لوجو براند ملابس (3D)</option><option>لوجو قيمنق احترافي</option>
+                        <option>بنر يوتيوب / فيسبوك</option><option>تصميم أكياس وشيكات</option>
+                        <option>موشن جرافيك (فيديو)</option><option>فيكتور آرت</option>
                     </select>
                 </div>
-                <div class="input-group" style="grid-column: 1 / -1;"><label>وصف الفكرة بالتفصيل</label><textarea id="ds_desc" rows="4"></textarea></div>
-                <button class="btn-submit" onclick="send('Design')">بدأ الإبداع 🎨</button>
+                <div class="input-group"><label>اسم البراند</label><input type="text" id="ds_brand"></div>
+                <div class="input-group" style="grid-column: 1/-1;"><label>وصف تخيلك للتصميم</label><textarea rows="4" id="ds_desc"></textarea></div>
+                <button class="btn-diamond" onclick="sendWA('Design')">بدأ الجلسة الإبداعية 🖼️</button>
             </div>
         </details>
 
         <details>
-            <summary>🌐 عشري ويب | ASHRY WEB</summary>
+            <summary>🌐 الويب & الأمن السيبراني | CYBER SERVICES</summary>
             <div class="form-grid">
-                <div class="input-group"><label>اسم المشروع</label><input type="text" id="web_title"></div>
+                <div class="input-group"><label>الاسم</label><input type="text" id="web_name"></div>
                 <div class="input-group">
-                    <label>نوع الموقع</label>
+                    <label>الخدمة المطلوبة</label>
                     <select id="web_type">
-                        <option>صفحة هبوط (Landing Page)</option><option>متجر إلكتروني (E-commerce)</option>
-                        <option>موقع شركة (Business)</option><option>برمجة بوت تليجرام</option>
+                        <option>برمجة متجر إلكتروني</option><option>برمجة بوت تليجرام</option>
+                        <option>تأمين حسابات شامل</option><option>استرجاع حسابات</option>
+                        <option>اختبار اختراق مواقع</option><option style="color:red">سحب بيانات (سرية)</option>
                     </select>
                 </div>
-                <div class="input-group" style="grid-column: 1 / -1;"><label>المميزات (مثلاً: نظام دفع، لغات متعددة)</label><textarea id="web_desc" rows="3"></textarea></div>
-                <button class="btn-submit" onclick="send('Web')">طلب البرمجة 💻</button>
+                <div class="input-group" style="grid-column: 1/-1;"><label>تفاصيل تقنية</label><textarea rows="3" id="web_desc"></textarea></div>
+                <button class="btn-diamond" onclick="sendWA('Cyber/Web')">تواصل مع المبرمج ⚔️</button>
             </div>
         </details>
 
         <details>
-            <summary>🛡️ السايبر & أكاديمية | CYBER & ACADEMY</summary>
+            <summary>📚 عشري أكاديمي | ACADEMY (Courses)</summary>
             <div class="form-grid">
                 <div class="input-group">
-                    <label>المسار المختار</label>
-                    <select id="cy_type">
-                        <option>كورس الاختراق الأخلاقي (كامل)</option><option>كورس اختراق المواقع</option>
-                        <option>كورس تعلم بايثون من الصفر</option><option>تأمين شامل للحسابات</option>
-                        <option>استرجاع داتا مخترقة</option><option style="color:red">خدمة سحب بيانات (خاص)</option>
+                    <label>المسار التعليمي</label>
+                    <select id="ac_type">
+                        <option>احتراف الهكر الأخلاقي</option><option>برمجة بايثون من الصفر</option>
+                        <option>احتراف أدوبي فوتوشوب</option><option>أسرار الربح من الدروبشيبينج</option>
                     </select>
                 </div>
-                <div class="input-group"><label>الاسم</label><input type="text" id="cy_name"></div>
-                <button class="btn-submit" onclick="send('Cyber')">حجز مكانك ⚔️</button>
+                <div class="input-group"><label>رقمك</label><input type="text" id="ac_phone"></div>
+                <button class="btn-diamond" onclick="sendWA('Academy')">حجز مكانك في الكورس 📖</button>
             </div>
         </details>
 
-        <div class="reviews-section">
-            <h2 style="text-align: center; color: var(--red);">آراء العملاء ⭐</h2>
-            <div id="comment_box"></div>
+        <div class="comment-section">
+            <h2 style="text-align: center; color: var(--red);">آراء الشينوبي حول العالم ⭐</h2>
+            <p style="text-align:center; color:#555">اضغط بالأسفل لإضافة تعليقك الدائم</p>
             
-            <div style="margin-top: 30px; border-top: 1px solid #222; padding-top: 20px;">
-                <input type="text" id="user_name" placeholder="اسمك">
-                <textarea id="user_comment" placeholder="اكتب رأيك هنا..." rows="3"></textarea>
-                <button class="btn-submit" onclick="postComment()" style="padding: 10px;">نشر التعليق</button>
-            </div>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = window.location.href;  
+                    this.page.identifier = 'ashry_network_main'; 
+                };
+                (function() { 
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://ashry-network.disqus.com/embed.js'; // ملاحظة: ستحتاج لإنشاء حساب مجاني على Disqus ووضع اسمك هنا
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
         </div>
 
     </div>
 
-    <footer>⌬ ASHRY NETWORK - UCHIHA POWER 2026 ⌬</footer>
+    <footer>
+        <p>⌬ ASHRY NETWORK | UCHIHA POWER ⌬</p>
+        <p>© 2026 جميع الحقوق محفوظة لـ "عـشـري"</p>
+    </footer>
 
     <script>
-        const phoneNum = "201038760809";
-
-        // وظيفة إرسال البيانات للواتساب بتنسيق فخم
-        function send(type) {
-            let msg = `*طلب جديد من: ${type}*%0A`;
-            msg += `--------------------------%0A`;
-            msg += `تواصل معي لتنفيذ الطلب.`;
-            window.open(`https://wa.me/${phoneNum}?text=${msg}`, '_blank');
+        function sendWA(section) {
+            const phone = "201038760809";
+            const text = `مرحباً عشري، أريد طلب خدمة من قسم: ${section}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         }
-
-        // وظيفة التعليقات مع الحفظ في المتصفح
-        function postComment() {
-            const name = document.getElementById('user_name').value;
-            const text = document.getElementById('user_comment').value;
-            if(!name || !text) return alert("املا الخانات يا بطل!");
-
-            const comment = { name, text, date: new Date().toLocaleDateString() };
-            let comments = JSON.parse(localStorage.getItem('ashry_comments') || '[]');
-            comments.push(comment);
-            localStorage.setItem('ashry_comments', JSON.stringify(comments));
-            renderComments();
-            document.getElementById('user_name').value = '';
-            document.getElementById('user_comment').value = '';
-        }
-
-        function renderComments() {
-            const box = document.getElementById('comment_box');
-            let comments = JSON.parse(localStorage.getItem('ashry_comments') || '[]');
-            box.innerHTML = comments.map(c => `
-                <div class="review-card">
-                    <strong>${c.name}</strong> <small style="color:#555">(${c.date})</small>
-                    <p style="margin:10px 0 0 0">${c.text}</p>
-                </div>
-            `).join('');
-        }
-
-        // تشغيل التعليقات عند الفتح
-        window.onload = renderComments;
     </script>
 </body>
 </html>
