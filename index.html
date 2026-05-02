@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⌬ ASHRY NETWORK | OFFICIAL 2026</title>
+    <title>⌬ ASHRY NETWORK | OFFICIAL HUB 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ⌬ ASHRY NETWORK - FULL CUSTOM CODE 2026 ⌬ */
+        /* ⌬ ASHRY NETWORK - MEGA CUSTOM CODE ⌬ */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
         :root {
@@ -22,52 +22,73 @@
         * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
         body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; transition: 0.5s; overflow-x: hidden; }
 
-        /* Matrix Background */
-        #c { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.1; }
+        /* Background Effects */
+        #c { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.12; pointer-events: none; }
 
-        /* Custom Scroll */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        /* UI Elements */
+        .t-btn { position: fixed; top: 25px; left: 25px; z-index: 1000; background: var(--primary); width: 55px; height: 55px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 0 20px var(--primary); transition: 0.3s; }
+        .t-btn:hover { transform: rotate(180deg) scale(1.1); }
 
-        /* Theme Toggle */
-        .t-btn { position: fixed; top: 25px; left: 25px; z-index: 1000; background: var(--primary); width: 55px; height: 55px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 0 20px var(--primary); }
-
-        /* Hero & Eye */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .eye-wrap { width: 220px; height: 220px; filter: drop-shadow(0 0 30px var(--primary)); animation: rot 15s linear infinite; cursor: pointer; }
+        /* Hero */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, rgba(255,0,0,0.05) 0%, transparent 70%); }
+        .eye-wrap { width: 240px; height: 240px; filter: drop-shadow(0 0 40px var(--primary)); animation: rot 20s linear infinite; cursor: pointer; margin-bottom: 20px; }
         @keyframes rot { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        .hero h1 { font-family: 'Orbitron'; font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 10px; margin: 20px 0; text-shadow: 0 0 15px var(--primary); }
-        .tagline { font-size: 1.2rem; color: var(--primary); font-family: 'JetBrains Mono'; letter-spacing: 3px; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(3.5rem, 12vw, 7rem); letter-spacing: 12px; margin: 15px 0; text-shadow: 3px 3px 0 var(--primary); position: relative; }
+        .hero h1::after { content: '⌬'; position: absolute; top: -20px; right: -40px; font-size: 2rem; color: var(--primary); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-        .socials { display: flex; gap: 25px; margin-top: 30px; }
-        .socials a { color: var(--text); font-size: 2.2rem; transition: 0.4s; }
-        .socials a:hover { color: var(--primary); transform: scale(1.2) translateY(-5px); }
+        .socials { display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
+        .socials a { color: var(--text); font-size: 2rem; transition: 0.4s; position: relative; }
+        .socials a:hover { color: var(--primary); transform: translateY(-8px); }
+        .socials a span { position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; font-family: 'Orbitron'; opacity: 0; }
+        .socials a:hover span { opacity: 1; }
 
-        /* Main Container */
-        .wrap { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; }
-        .box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 25px; transition: 0.3s; overflow: hidden; }
-        .box:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
-        .h { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, rgba(255,0,0,0.03), transparent); }
-        .h h2 { display: flex; align-items: center; gap: 15px; font-size: 1.5rem; }
-        .b { max-height: 0; overflow: hidden; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 25px; }
-        .box.open .b { max-height: 1500px; padding: 30px 25px; }
+        /* Containers */
+        .wrap { max-width: 1200px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
+        .box { background: var(--card); border: 1px solid var(--border); border-radius: 25px; margin-bottom: 30px; transition: 0.4s ease; overflow: hidden; }
+        .box:hover { border-color: var(--primary); box-shadow: 0 15px 45px rgba(0,0,0,0.4); }
+        
+        .h { padding: 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, rgba(255,0,0,0.05), transparent); }
+        .h h2 { display: flex; align-items: center; gap: 15px; font-size: 1.6rem; font-weight: 900; }
+        .h i.arrow { transition: 0.4s; color: var(--primary); }
+        .box.open i.arrow { transform: rotate(180deg); }
 
-        /* Forms */
+        .b { max-height: 0; overflow: hidden; transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 30px; }
+        .box.open .b { max-height: 2500px; padding: 40px 30px; border-top: 1px solid var(--border); }
+
+        /* Form Controls */
+        .client-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px dashed var(--border); }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        label { color: var(--primary); font-weight: bold; margin-bottom: 8px; display: block; font-size: 0.9rem; }
-        input, select, textarea { width: 100%; padding: 14px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 10px; color: #fff; font-family: 'Cairo'; }
+        
+        .field { position: relative; margin-bottom: 15px; }
+        label { color: var(--primary); font-weight: 700; margin-bottom: 10px; display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        input, select, textarea { 
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.4); border: 1px solid var(--border); 
+            border-radius: 12px; color: #fff; font-family: 'Cairo'; transition: 0.3s;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,0,0.2); }
+        
         [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { background: #fff; color: #000; }
         
-        .btn { width: 100%; padding: 18px; background: var(--primary); color: #fff; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 1.1rem; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn:hover { box-shadow: 0 0 25px var(--primary); transform: translateY(-3px); }
+        .btn { 
+            width: 100%; padding: 20px; background: var(--primary); color: #fff; border: none; 
+            border-radius: 15px; font-weight: 900; cursor: pointer; transition: 0.4s; 
+            font-size: 1.2rem; margin-top: 25px; display: flex; align-items: center; justify-content: center; gap: 12px; 
+        }
+        .btn:hover { background: #b30000; box-shadow: 0 0 30px var(--primary); transform: translateY(-5px); }
 
-        /* Reviews */
-        .rev-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border-right: 4px solid var(--primary); margin-bottom: 15px; animation: slideUp 0.5s ease forwards; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .rev-card strong { color: var(--primary); display: block; margin-bottom: 5px; }
+        /* Reviews Section */
+        .rev-card { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border-right: 5px solid var(--primary); margin-bottom: 20px; transition: 0.3s; }
+        .rev-card:hover { transform: translateX(-10px); background: rgba(255,255,255,0.05); }
+        .rev-card strong { color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 8px; }
+        .rev-card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.9; }
 
-        footer { text-align: center; padding: 50px; opacity: 0.6; font-family: 'Orbitron'; font-size: 0.8rem; }
+        footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); color: var(--primary); font-family: 'Orbitron'; font-size: 0.9rem; letter-spacing: 3px; }
+
+        /* Animation */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body data-theme="dark">
@@ -86,146 +107,233 @@
         </svg>
     </div>
     <h1>⌬ ASHRY</h1>
-    <p class="tagline">SECURITY • CODING • DESIGN</p>
+    <p class="tagline" style="font-family: 'Orbitron'; letter-spacing: 5px;">DEVELOPER • SECURITY ANALYST • DESIGNER</p>
+    
     <div class="socials">
-        <a href="https://youtube.com/@AshryNetwork" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://t.me/AshryNetwork" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://facebook.com/AshryNetwork" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://wa.me/201038760809" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://github.com/AshrySecurity" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://youtube.com/@AshryNetwork" target="_blank"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+        <a href="https://t.me/AshryNetwork" target="_blank"><i class="fab fa-telegram"></i><span>Telegram</span></a>
+        <a href="https://facebook.com/AshryNetwork" target="_blank"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+        <a href="https://wa.me/201038760809" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="https://github.com/AshrySecurity" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
     </div>
 </section>
 
 <div class="wrap">
-    <div class="box" id="s1">
-        <div class="h" onclick="toggle('s1')"><h2><i class="fas fa-shopping-cart"></i> ⌬ ASHRY STORE</h2><i class="fas fa-plus"></i></div>
+
+    <div class="box" id="sec_store">
+        <div class="h" onclick="toggle('sec_store')"><h2><i class="fas fa-shopping-cart"></i> ⌬ ASHRY STORE</h2><i class="fas fa-chevron-down arrow"></i></div>
         <div class="b">
-            <div class="grid">
-                <div><label>اللعبة</label><select id="g_n"><option>ببجي موبايل (UC)</option><option>فري فاير (جواهر)</option><option>إي فوتبول (بيس)</option><option>فالورانت</option><option>روبلوكس</option><option>كول أوف ديوتي</option></select></div>
-                <div><label>الآيدي ID</label><input type="text" id="g_i"></div>
-                <div><label>الكمية</label><input type="number" id="g_q"></div>
+            <div class="client-info">
+                <div><label>الاسم الكامل</label><input type="text" class="c_name" placeholder="ادخل اسمك"></div>
+                <div><label>البريد الإلكتروني</label><input type="email" class="c_mail" placeholder="example@gmail.com"></div>
+                <div><label>رقم الواتساب</label><input type="text" class="c_phone" placeholder="01xxxxxxxxx"></div>
             </div>
-            <button class="btn" onclick="send('Store')">طلب شحن فوري <i class="fas fa-bolt"></i></button>
+            <div class="grid">
+                <div><label>اختر اللعبة</label><select class="g_name"><option>ببجي موبايل (UC)</option><option>فري فاير (Jewels)</option><option>إي فوتبول (PES)</option><option>فالورانت (VP)</option><option>روبلوكس (Robux)</option><option>كول أوف ديوتي (CP)</option></select></div>
+                <div><label>الآيدي (ID)</label><input type="text" class="g_id" placeholder="ID الحساب"></div>
+                <div><label>الكمية</label><input type="number" class="g_qty" placeholder="مثال: 8100"></div>
+            </div>
+            <button class="btn" onclick="order('Store', 'sec_store')">⌬ إرسال الطلب للواتساب</button>
         </div>
     </div>
 
-    <div class="box" id="s2">
-        <div class="h" onclick="toggle('s2')"><h2><i class="fas fa-code"></i> سكريبتات وبرمجة ويب</h2><i class="fas fa-plus"></i></div>
+    <div class="box" id="sec_web">
+        <div class="h" onclick="toggle('sec_web')"><h2><i class="fas fa-code"></i> البرمجة والسكريبتات</h2><i class="fas fa-chevron-down arrow"></i></div>
         <div class="b">
-            <div class="grid">
-                <div><label>الخدمة</label><select id="w_t"><option>سكريبت خاص (Python/PHP)</option><option>متجر إلكتروني</option><option>موقع بورتفوليو</option><option>Landing Page</option></select></div>
-                <div style="grid-column: 1/-1"><label>وصف المشروع</label><textarea id="w_d" rows="4"></textarea></div>
+            <div class="client-info">
+                <div><label>الاسم</label><input type="text" class="c_name"></div>
+                <div><label>الجيميل</label><input type="email" class="c_mail"></div>
+                <div><label>الواتساب</label><input type="text" class="c_phone"></div>
             </div>
-            <button class="btn" onclick="send('Web')">بدأ البرمجة <i class="fas fa-terminal"></i></button>
+            <div class="grid">
+                <div><label>نوع الخدمة</label><select class="w_type"><option>سكريبت بايثون خاص</option><option>متجر إلكتروني متكامل</option><option>موقع بورتفوليو</option><option>Landing Page</option><option>تطوير سكريبت PHP</option></select></div>
+                <div style="grid-column: 1/-1"><label>وصف المشروع</label><textarea class="w_desc" rows="4" placeholder="اشرح لنا فكرة السكريبت أو الموقع..."></textarea></div>
+            </div>
+            <button class="btn" onclick="order('Web', 'sec_web')">⌬ حجز استشارة برمجية</button>
         </div>
     </div>
 
-    <div class="box" id="s3">
-        <div class="h" onclick="toggle('s3')"><h2><i class="fas fa-shield-alt"></i> الأمن السيبراني</h2><i class="fas fa-plus"></i></div>
+    <div class="box" id="sec_cyber">
+        <div class="h" onclick="toggle('sec_cyber')"><h2><i class="fas fa-user-shield"></i> الأمن السيبراني</h2><i class="fas fa-chevron-down arrow"></i></div>
         <div class="b">
-            <div class="grid">
-                <div><label>نوع العملية</label><select id="c_t"><option>تأمين حسابات</option><option>اختبار اختراق (Red Team)</option><option>برمجة بوتات حماية</option><option>استرجاع حسابات</option></select></div>
-                <div style="grid-column: 1/-1"><label>التفاصيل التقنية</label><textarea id="c_d" rows="3"></textarea></div>
+            <div class="client-info">
+                <div><label>الاسم</label><input type="text" class="c_name"></div>
+                <div><label>الواتساب</label><input type="text" class="c_phone"></div>
             </div>
-            <button class="btn" onclick="send('Cyber')">تنفيذ المهمة <i class="fas fa-user-secret"></i></button>
+            <div class="grid">
+                <div><label>الخدمة المطلوبة</label><select class="cy_type"><option>تأمين حسابات سوشيال ميديا</option><option>اختبار اختراق مواقع (Pen-Test)</option><option>استرجاع حساب مخترق</option><option>فحص تطبيقات أندرويد</option></select></div>
+                <div style="grid-column: 1/-1"><label>تفاصيل الحالة</label><textarea class="cy_desc" rows="3"></textarea></div>
+            </div>
+            <button class="btn" onclick="order('Cyber', 'sec_cyber')">⌬ تنفيذ العملية الأمنية</button>
         </div>
     </div>
 
-    <div class="box" id="s4">
-        <div class="h" onclick="toggle('s4')"><h2><i class="fas fa-paint-brush"></i> ⌬ ASHRY DESIGN</h2><i class="fas fa-plus"></i></div>
+    <div class="box" id="sec_bots">
+        <div class="h" onclick="toggle('sec_bots')"><h2><i class="fas fa-robot"></i> برمجة البوتات (Bbots)</h2><i class="fas fa-chevron-down arrow"></i></div>
         <div class="b">
-            <div class="grid">
-                <div><label>الستايل</label><select id="d_t"><option>Typography (أسماء)</option><option>لوجو ملابس</option><option>3D Gaming Logo</option><option>بنر يوتيوب</option></select></div>
-                <div><label>النص المراد تصميمه</label><input type="text" id="d_n"></div>
+            <div class="client-info">
+                <div><label>الاسم</label><input type="text" class="c_name"></div>
+                <div><label>الواتساب</label><input type="text" class="c_phone"></div>
             </div>
-            <button class="btn" onclick="send('Design')">بدأ التصميم <i class="fas fa-palette"></i></button>
+            <div class="grid">
+                <div><label>منصة البوت</label><select class="bot_plat"><option>تليجرام (Telegram Bot)</option><option>ديسكورد (Discord Bot)</option><option>واتساب (WhatsApp Bot)</option></select></div>
+                <div style="grid-column: 1/-1"><label>وظيفة البوت</label><textarea class="bot_desc" rows="3" placeholder="مثال: بوت حماية جروبات، بوت مبيعات..."></textarea></div>
+            </div>
+            <button class="btn" onclick="order('Bots', 'sec_bots')">⌬ اطلب بوتك الخاص</button>
         </div>
     </div>
 
-    <div style="margin-top: 60px;">
-        <h2 style="text-align: center; color: var(--primary); font-family: 'Orbitron'; margin-bottom: 30px;">⌬ NETWORK FEEDBACK</h2>
-        <div id="r-list"></div>
-        <div style="background: var(--card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); margin-top: 30px;">
-            <div class="grid"><input type="text" id="r_u" placeholder="اسمك"><textarea id="r_c" placeholder="رأيك التقني..."></textarea></div>
-            <button class="btn" style="width: 180px; font-size: 0.9rem; padding: 12px;" onclick="addR()">نشر</button>
+    <div class="box" id="sec_smm">
+        <div class="h" onclick="toggle('sec_smm')"><h2><i class="fas fa-chart-line"></i> خدمات تزويد المتابعين (SMM)</h2><i class="fas fa-chevron-down arrow"></i></div>
+        <div class="b">
+            <div class="client-info">
+                <div><label>الاسم</label><input type="text" class="c_name"></div>
+                <div><label>الواتساب</label><input type="text" class="c_phone"></div>
+            </div>
+            <div class="grid">
+                <div><label>المنصة</label><select class="smm_plat"><option>فيسبوك (متابعين/لايكات)</option><option>انستجرام (متابعين حقيقيين)</option><option>تيك توك (مشاهدات/متابعين)</option><option>تليجرام (أعضاء قنوات)</option></select></div>
+                <div><label>رابط الحساب / القناة</label><input type="text" class="smm_link" placeholder="https://..."></div>
+                <div><label>العدد المطلوب</label><input type="number" class="smm_qty"></div>
+            </div>
+            <button class="btn" onclick="order('SMM', 'sec_smm')">⌬ تنفيذ الطلب</button>
+        </div>
+    </div>
+
+    <div class="box" id="sec_design">
+        <div class="h" onclick="toggle('sec_design')"><h2><i class="fas fa-palette"></i> ⌬ ASHRY DESIGN</h2><i class="fas fa-chevron-down arrow"></i></div>
+        <div class="b">
+            <div class="client-info">
+                <div><label>الاسم</label><input type="text" class="c_name"></div>
+                <div><label>الواتساب</label><input type="text" class="c_phone"></div>
+            </div>
+            <div class="grid">
+                <div><label>نوع التصميم</label><select class="d_type"><option>Typography (لوجو أسماء)</option><option>هوية براند ملابس</option><option>3D Gaming Logo</option><option>بنر يوتيوب احترافي</option></select></div>
+                <div><label>النص في التصميم</label><input type="text" class="d_text" placeholder="اكتب الاسم هنا"></div>
+            </div>
+            <button class="btn" onclick="order('Design', 'sec_design')">⌬ بدأ التصميم الإبداعي</button>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <h2 style="text-align: center; color: var(--primary); font-family: 'Orbitron'; margin-bottom: 40px; letter-spacing: 5px;">⌬ CUSTOMER LOGS</h2>
+        <div id="review_list"></div>
+        <div style="background: var(--card); padding: 30px; border-radius: 25px; border: 1px dashed var(--primary); margin-top: 40px;">
+            <h4 style="margin-bottom: 20px; color: var(--primary);">اترك تقييمك للشبكة</h4>
+            <div class="grid">
+                <input type="text" id="rev_u" placeholder="اسمك المستعار">
+                <textarea id="rev_c" placeholder="تقييمك للخدمة..."></textarea>
+            </div>
+            <button class="btn" style="width: 200px; font-size: 0.9rem;" onclick="addReview()">⌬ نشر التقييم</button>
         </div>
     </div>
 </div>
 
-<footer>⌬ ASHRY NETWORK | THE CORE OF TECH 2026</footer>
+<footer>⌬ ASHRY NETWORK | ALL RIGHTS RESERVED 2026</footer>
 
 <script>
-    // Matrix Background Logic
-    const c = document.getElementById("c"), ctx = c.getContext("2d");
-    c.height = window.innerHeight; c.width = window.innerWidth;
-    const char = "⌬ASHRY0101NETWORK$#@%&*";
-    const f = 16, drops = [];
-    for(let i=0; i<c.width/f; i++) drops[i] = 1;
-    function draw() {
-        ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,c.width,c.height);
+    // 1. Matrix Background
+    const canvas = document.getElementById("c"), ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight; canvas.width = window.innerWidth;
+    const chars = "⌬ASHRY01010101NETWORKSYSTEMSECURITY";
+    const fontSize = 17, drops = [];
+    for(let i=0; i<canvas.width/fontSize; i++) drops[i] = 1;
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,canvas.width,canvas.height);
         ctx.fillStyle = document.body.getAttribute('data-theme') === 'dark' ? "#ff0000" : "#0066ff";
-        ctx.font = f + "px Orbitron";
+        ctx.font = fontSize + "px JetBrains Mono";
         for(let i=0; i<drops.length; i++) {
-            const txt = char[Math.floor(Math.random()*char.length)];
-            ctx.fillText(txt, i*f, drops[i]*f);
-            if(drops[i]*f > c.height && Math.random() > 0.975) drops[i] = 0;
+            const text = chars[Math.floor(Math.random()*chars.length)];
+            ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+            if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
             drops[i]++;
         }
     }
-    setInterval(draw, 35);
+    setInterval(drawMatrix, 35);
 
+    // 2. Theme Toggle
     function toggleTheme() {
-        const b = document.body; b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        const b = document.body;
+        b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
 
+    // 3. Section Toggle
     function toggle(id) {
-        document.querySelectorAll('.box').forEach(el => { if(el.id !== id) el.classList.remove('open'); });
+        document.querySelectorAll('.box').forEach(b => { if(b.id !== id) b.classList.remove('open'); });
         document.getElementById(id).classList.toggle('open');
     }
 
-    function send(s) {
-        let m = `*⌬ ASHRY NETWORK ORDER*%0Aالقسم: ${s}%0A-----------------%0A`;
-        if(s==='Store') m += `اللعبة: ${document.getElementById('g_n').value}%0AID: ${document.getElementById('g_i').value}%0Aالكمية: ${document.getElementById('g_q').value}`;
-        window.open(`https://wa.me/201038760809?text=${m}`, '_blank');
+    // 4. Advanced WhatsApp Ordering System
+    function order(type, sectionId) {
+        const sec = document.getElementById(sectionId);
+        const name = sec.querySelector('.c_name').value;
+        const phone = sec.querySelector('.c_phone').value;
+        const email = sec.querySelector('.c_mail') ? sec.querySelector('.c_mail').value : 'غير متوفر';
+        
+        if(!name || !phone) { alert('يا بطل كمل بياناتك (الاسم والرقم) عشان نعرف نتواصل معاك!'); return; }
+
+        let msg = `*⌬ طلب جديد من موقع ASHRY NETWORK*%0A`;
+        msg += `---------------------------%0A`;
+        msg += `👤 الاسم: ${name}%0A`;
+        msg += `📞 الواتساب: ${phone}%0A`;
+        msg += `📧 الجيميل: ${email}%0A`;
+        msg += `---------------------------%0A`;
+        msg += `📂 القسم: ${type}%0A`;
+
+        if(type === 'Store') {
+            msg += `🎮 اللعبة: ${sec.querySelector('.g_name').value}%0A🆔 الآيدي: ${sec.querySelector('.g_id').value}%0A💰 الكمية: ${sec.querySelector('.g_qty').value}`;
+        } else if(type === 'Web') {
+            msg += `💻 النوع: ${sec.querySelector('.w_type').value}%0A📝 الوصف: ${sec.querySelector('.w_desc').value}`;
+        } else if(type === 'Cyber') {
+            msg += `🛡️ الخدمة: ${sec.querySelector('.cy_type').value}%0A📑 التفاصيل: ${sec.querySelector('.cy_desc').value}`;
+        } else if(type === 'Bots') {
+            msg += `🤖 المنصة: ${sec.querySelector('.bot_plat').value}%0A⚙️ الوظيفة: ${sec.querySelector('.bot_desc').value}`;
+        } else if(type === 'SMM') {
+            msg += `📈 المنصة: ${sec.querySelector('.smm_plat').value}%0A🔗 الرابط: ${sec.querySelector('.smm_link').value}%0A👥 العدد: ${sec.querySelector('.smm_qty').value}`;
+        } else if(type === 'Design') {
+            msg += `🎨 النوع: ${sec.querySelector('.d_type').value}%0A✒️ النص: ${sec.querySelector('.d_text').value}`;
+        }
+
+        window.open(`https://wa.me/201038760809?text=${msg}`, '_blank');
     }
 
+    // 5. Professional Review Data
     const reviews = [
-        {u:"Ziad_Dev", t:"السكريبت اللي عشري عملهولي بلغة بايثون سريع جداً ومنظم. كود نضيف فعلاً."},
-        {u:"Shadow_Gamer", t:"شحنت 8100 UC ووصلوا في وقت قياسي، ثقة عمياء بجد."},
-        {u:"Ahmed_Typography", t:"لوجو الاسم Typography اللي اتعملي فكرته عالمية، ميز البراند بتاعي."},
-        {u:"Cyber_King", t:"تأمين الحسابات عنده ملوش حل، رجعت حسابي بعد ما فقدت الأمل."},
-        {u:"Mostafa_Tech", t:"أفضل مبرمج تعاملت معاه في سكريبتات السحب والتأمين."},
-        {u:"M. Khaled", t:"شحن كوينز إي فوتبول فوري، موقع صادق 100%."},
-        {u:"Noor_Design", t:"الـ 3D Gaming Logo طلع فخم جداً وبدقة عالية."},
-        {u:"Omar_Security", t:"شرح Red Teaming كان واضح جداً وفادني في شغلي."},
-        {u:"Hassan_Gamer", t:"روبوكس وكول أوف ديوتي، أرخص سعر في السوق."},
-        {u:"Ali_Dev", t:"الـ Landing Page اللي اتبرمجتلي سريعة جداً وSEO ممتاز."},
-        {u:"Kareem", t:"مصداقية وسرعة في الرد، أنصح الكل بالتعامل معاه."},
-        {u:"Hany_Ashry", t:"دائماً متألق يا عشري، الشغل مفيش فيه غلطة."},
-        {u:"Youssef", t:"بوت الحماية بتاع التليجرام شغال بقاله شهر مفيش هبد."},
-        {u:"Abdo", t:"تصميمات ملابس عالمية، فنان يا وحش."},
-        {u:"Tarek", t:"رجعت حسابي المخترق في أقل من 24 ساعة."},
-        {u:"Ismail", t:"شحن فالورانت فوري، ثقة 100%."},
-        {u:"Sayed", t:"التعامل معاه مريح جداً وفهمان في شغله."},
-        {u:"Gamer_X", t:"أفضل ستور شحن في 2026 بلا منازع."},
-        {u:"Technical_Mind", t:"كود السكريبت احترافي ومحمي من الثغرات."},
-        {u:"Ashry_Fan", t:"كل الدعم ليك يا بطل، موقع واجهة تشرف."}
+        {u:"Youssef_7", t:"طلبت سكريبت سحب بيانات بايثون وخلص في يوم واحد، كود منظم جداً."},
+        {u:"Gamer_Pro", t:"شحنت 8100 UC ووصلوا في 5 دقايق، بجد عشري ستور ثقة."},
+        {u:"Ahmed_Branding", t:"اللوجو التايبوغرافي اللي اتعملي ميز البراند بتاعي جداً عن المنافسين."},
+        {u:"Secure_Man", t:"تأمين حساب الفيس والتليجرام تم باحترافية، والرد سريع جداً."},
+        {u:"SMM_Expert", t:"زودت أعضاء قناتي تليجرام والعدد ثابت مفيش نقص، شكراً يا بطل."},
+        {u:"Shadow_Dev", t:"بوت التليجرام اللي برمجتهولي شغال 24 ساعة مفيش فيه غلطة."},
+        {u:"M. Ali", t:"أفضل خدمة عملاء تقنية قابلتها في 2026."},
+        {u:"Dina_Art", t:"تصميمات ملابس عالمية، فنان ومبدع يا عشري."},
+        {u:"Black_Hat", t:"اختبار الاختراق للموقع بتاعي كشف ثغرات مكنتش اتخيلها."},
+        {u:"Kimo", t:"شحن كوينز إي فوتبول فوري، موقع محترم جداً."},
+        {u:"Mustafa", t:"الـ Landing Page اللي اتعملتلي خلت المبيعات تزيد الضعف."},
+        {u:"Ziad", t:"برمجة سكريبتات بمستوى عالمي وسعر منافس."},
+        {u:"Hassan", t:"أسرع ستور شحن في مصر بدون مبالغة."},
+        {u:"Omar", t:"تأمين الحسابات عنده جبار، أنصح بيه الكل."},
+        {u:"Eslam", t:"لوجو القيمنق 3D بتاعي طلع تحفة فنية."},
+        {u:"Ismail", t:"زودت متابعين تيك توك ووصلوا كلهم حقيقيين."},
+        {u:"Samy", t:"بوت الديسكورد اللي عملتهولي فيه مميزات مش عند حد."},
+        {u:"Fady", t:"دائماً متطور وشغلك يرفع الراس يا عشري."},
+        {u:"Nader", t:"استرجعت حسابي اللي كان مسروق في أقل من ساعتين."},
+        {u:"Ashry_Fan", t:"موقع فخم يليق باسم الشبكة، استمر."}
     ];
 
-    function renderR() {
-        const list = document.getElementById('r-list'); list.innerHTML = '';
+    function renderReviews() {
+        const list = document.getElementById('review_list'); list.innerHTML = '';
         reviews.forEach(r => {
             list.innerHTML += `<div class="rev-card"><strong>⌬ ${r.u}</strong><p>${r.t}</p></div>`;
         });
     }
 
-    function addR() {
-        const u = document.getElementById('r_u').value, c = document.getElementById('r_c').value;
+    function addReview() {
+        const u = document.getElementById('rev_u').value, c = document.getElementById('rev_c').value;
         if(!u || !c) return;
-        reviews.unshift({u, t:c}); renderR();
-        document.getElementById('r_u').value=''; document.getElementById('r_c').value='';
+        reviews.unshift({u, t:c}); renderReviews();
+        document.getElementById('rev_u').value=''; document.getElementById('rev_c').value='';
     }
-    renderR();
+    renderReviews();
 </script>
 </body>
 </html>
