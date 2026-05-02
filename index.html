@@ -3,277 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashry Network | عـشـري</title>
+    <title>Ashry Network | عـشـري - Uchiha Style</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Orbitron:wght@500;900&display=swap');
 
         :root {
-            --primary: #00d2ff;
-            --accent: #9d00ff;
-            --glass: rgba(255, 255, 255, 0.1);
+            --uchicha-red: #ff0000;
+            --sharingan-glow: #ff4d4d;
+            --dark-void: #050505;
+            --glass: rgba(20, 20, 20, 0.85);
         }
 
         body {
             margin: 0;
-            background: #0a0a0c;
-            color: white;
+            background: var(--dark-void);
+            color: #eee;
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.alphacoders.com/131/1311029.jpg'); /* خلفية أنمي */
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://w0.peakpx.com/wallpaper/439/843/HD-wallpaper-itachi-uchiha-dark-background-sharingan-naruto-shippuden.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
         }
 
-        /* تأثيرات خلفية متحركة */
-        .bg-animate {
+        /* تأثير الشارينجان */
+        .sharingan-container {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.1) 0%, transparent 50%);
-            animation: pulse 10s infinite;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            filter: drop-shadow(0 0 10px var(--uchicha-red));
+            animation: rotateSharingan 10s linear infinite;
         }
 
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes rotateSharingan {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
         header {
             text-align: center;
-            padding: 50px 20px;
-            animation: fadeInDown 1s ease;
+            padding: 80px 20px 40px;
+            position: relative;
         }
 
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 5px;
-            text-shadow: 0 0 20px var(--primary);
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            letter-spacing: 10px;
+            color: var(--uchicha-red);
+            text-shadow: 0 0 20px var(--uchicha-red), 0 0 40px #000;
+            margin: 0;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .social-links a {
             color: white;
             font-size: 24px;
-            transition: 0.3s;
-            background: var(--glass);
-            width: 50px; height: 50px;
+            background: rgba(255,0,0,0.1);
+            width: 55px; height: 55px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 2px solid var(--uchicha-red);
+            transition: 0.5s;
+            text-decoration: none;
+            box-shadow: 0 0 10px var(--uchicha-red);
         }
 
         .social-links a:hover {
-            transform: translateY(-5px);
-            color: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.2) rotate(360deg);
+            background: var(--uchicha-red);
+            box-shadow: 0 0 30px var(--uchicha-red);
         }
 
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 0 auto 100px;
+            padding: 20px;
         }
 
-        .badge-card {
+        /* نظام الأزرار المنسدلة */
+        details {
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 25px;
-            transition: 0.4s;
-            position: relative;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,0,0,0.3);
             overflow: hidden;
-        }
-
-        .badge-card:hover {
-            transform: scale(1.03);
-            border-color: var(--primary);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
-        }
-
-        .badge-card h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--primary);
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            color: white;
-            box-sizing: border-box;
-        }
-
-        .btn-send {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
             transition: 0.3s;
-            margin-top: 10px;
-            font-family: 'Cairo';
         }
 
-        .btn-send:hover {
-            letter-spacing: 2px;
-            box-shadow: 0 0 20px var(--primary);
+        summary {
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(90deg, rgba(255,0,0,0.2), transparent);
         }
 
-        .illegal-tag { color: #ff4b2b; font-weight: bold; }
+        summary::before {
+            content: '⌬';
+            color: var(--uchicha-red);
+            font-size: 1.8rem;
+        }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
+        .content {
+            padding: 25px;
+            border-top: 1px solid rgba(255,0,0,0.2);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .main-title { font-size: 2rem; }
-            .container { padding: 15px; }
+        label { display: block; margin-top: 15px; color: var(--uchicha-red); font-weight: bold; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Cairo';
         }
+
+        input:focus, select:focus { border-color: var(--uchicha-red); outline: none; }
+
+        .btn-send {
+            width: 100%;
+            padding: 18px;
+            margin-top: 25px;
+            background: var(--uchicha-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+        }
+
+        .btn-send:hover {
+            background: #cc0000;
+            letter-spacing: 2px;
+            box-shadow: 0 0 25px var(--uchicha-red);
+        }
+
+        .illegal { color: #ff4d4d; font-style: italic; }
+
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; }
+
     </style>
 </head>
 <body>
 
-    <div class="bg-animate"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Sharingan_triple.svg/1024px-Sharingan_triple.svg.png" class="sharingan-container" alt="Sharingan">
 
     <header>
-        <h1 class="main-title">⌬ ASHRY NETWORK</h1>
-        <p>Your Gateway to Store, Design & Security</p>
-        
+        <h1 class="main-title">ASHRY NETWORK</h1>
         <div class="social-links">
-            <a href="https://instagram.com/your_user" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/your_user" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://youtube.com/@your_user" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/201038760809" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/your_user"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/your_user"><i class="fab fa-telegram"></i></a>
+            <a href="https://youtube.com/@your_user"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/201038760809"><i class="fab fa-whatsapp"></i></a>
         </div>
     </header>
 
     <div class="container">
-        
-        <div class="badge-card">
-            <h2>⌬ عشري ستور | Ashry Store</h2>
-            <input type="text" id="store_name" placeholder="الاسم بالكامل">
-            <input type="text" id="store_phone" placeholder="رقم الهاتف">
-            <select id="store_game">
-                <option value="PUBG Mobile">PUBG Mobile</option>
-                <option value="Free Fire">Free Fire</option>
-                <option value="Roblox">Roblox</option>
-                <option value="Call of Duty">Call of Duty</option>
-            </select>
-            <input type="number" id="store_qty" placeholder="الكمية">
-            <input type="text" id="store_id" placeholder="ID الحساب">
-            <button class="btn-send" onclick="sendStore()">ارسال الطلب ⚡</button>
-        </div>
 
-        <div class="badge-card">
-            <h2>⌬ عشري ديزاين | Ashry Design</h2>
-            <input type="text" id="ds_name" placeholder="اسم الشخص">
-            <input type="text" id="ds_phone" placeholder="رقم الهاتف">
-            <input type="text" id="ds_title" placeholder="اسم التصميم">
-            <select id="ds_type">
-                <option value="Logo Design">لوجو (Logo)</option>
-                <option value="Social Media">سوشيال ميديا</option>
-                <option value="Branding">هوية بصرية</option>
-                <option value="Packaging">تغليف (Shopping Bags)</option>
-                <option value="Thumbnail">غلاف يوتيوب</option>
-            </select>
-            <textarea id="ds_desc" rows="3" placeholder="وصف التصميم بالتفصيل"></textarea>
-            <button class="btn-send" onclick="sendDesign()">ارسال التصميم 🎨</button>
-        </div>
+        <details>
+            <summary>عشري ستور | ASHRY STORE 🎮</summary>
+            <div class="content">
+                <label>اختر اللعبة أو الخدمة:</label>
+                <select id="st_game">
+                    <optgroup label="ألعاب الموبايل والكمبيوتر">
+                        <option value="PUBG UC">ببجي موبايل (UC)</option>
+                        <option value="Free Fire Diamonds">فري فاير (Diamonds)</option>
+                        <option value="Robux">روبلوكس (Robux)</option>
+                        <option value="Valorant Points">فالورانت (Points)</option>
+                        <option value="League of Legends RP">ليج أوف ليجيندز (RP)</option>
+                        <option value="Fortnite V-Bucks">فورتنايت (V-Bucks)</option>
+                        <option value="Mobile Legends">موبايل ليجيندز</option>
+                        <option value="E-Football Coins">إي فوتبول (Coins)</option>
+                        <option value="8 Ball Pool">8 بول بول</option>
+                        <option value="Clash of Clans">كلاش أوف كلانس</option>
+                        <option value="Clash Royale">كلاش رويال</option>
+                        <option value="Apex Legends">أبيكس ليجيندز</option>
+                        <option value="Genshin Impact">جينشين إمباكت</option>
+                    </optgroup>
+                    <optgroup label="بطاقات الشحن والاشتراكات">
+                        <option value="Steam Card">بطاقات ستيم (Steam)</option>
+                        <option value="PlayStation Store">بلايستيشن ستور</option>
+                        <option value="Xbox Gift Card">إكس بوكس</option>
+                        <option value="Discord Nitro">ديسكورد نيترو (Nitro)</option>
+                        <option value="Google Play">جوجل بلاي</option>
+                        <option value="iTunes Card">آيتونز</option>
+                    </optgroup>
+                </select>
 
-        <div class="badge-card">
-            <h2>⌬ تعليم واتساب | WA Academy</h2>
-            <input type="text" id="wa_name" placeholder="الاسم">
-            <input type="text" id="wa_phone" placeholder="رقم الهاتف">
-            <input type="email" id="wa_email" placeholder="الجيميل">
-            <textarea id="wa_desc" rows="3" placeholder="ماذا تريد أن تتعلم؟"></textarea>
-            <button class="btn-send" onclick="sendWAEdu()">ارسال الطلب 🛠️</button>
-        </div>
+                <label>الاسم بالكامل:</label>
+                <input type="text" id="st_name" placeholder="👤 اسمك">
+                <label>رقم التواصل:</label>
+                <input type="text" id="st_phone" placeholder="📱 رقمك">
+                <label>الكمية المطلوبة:</label>
+                <input type="number" id="st_qty" placeholder="💎 العدد">
+                <label>الآي دي (ID) / الإيميل:</label>
+                <input type="text" id="st_id" placeholder="🆔 معرف الحساب">
 
-        <div class="badge-card">
-            <h2>⌬ الأمن السيبراني | Cyber Sec</h2>
-            <p style="font-size: 12px; margin-bottom: 10px;">خريطة المجال والتعلم:</p>
-            <select id="cy_goal">
-                <option value="أساسيات الشبكات">أساسيات الشبكات ✅</option>
-                <option value="اختبار الاختراق الأخلاقي">اختبار الاختراق الأخلاقي ✅</option>
-                <option value="تأمين الحسابات">تأمين الحسابات ✅</option>
-                <option value="اختراق حسابات (غير قانوني)" class="illegal-tag">اختراق حسابات (غير قانوني) ⚠️</option>
-                <option value="سحب داتا (غير قانوني)" class="illegal-tag">سحب داتا (غير قانوني) ⚠️</option>
-            </select>
-            <input type="text" id="cy_name" placeholder="الاسم">
-            <input type="text" id="cy_phone" placeholder="رقم الهاتف">
-            <input type="email" id="cy_email" placeholder="الجيميل">
-            <textarea id="cy_desc" rows="3" placeholder="وصف الشيء الذي تريد تعلمه بدقة"></textarea>
-            <button class="btn-send" onclick="sendCyber()">ارسال الطلب 🛡️</button>
-        </div>
+                <button class="btn-send" onclick="sendStore()">إرسال الطلب عبر الواتساب ⚡</button>
+            </div>
+        </details>
+
+        <details>
+            <summary>عشري ديزاين | ASHRY DESIGN 🎨</summary>
+            <div class="content">
+                <label>نوع التصميم المطلوب:</label>
+                <select id="ds_type">
+                    <option value="Logo Design">تصميم شعار (لوجو احترافي)</option>
+                    <option value="YouTube Thumbnail">غلاف يوتيوب (Thumbnail)</option>
+                    <option value="YouTube Banner">بنر يوتيوب (Banner)</option>
+                    <option value="Social Media Post">بوستات سوشيال ميديا</option>
+                    <option value="Full Branding">هوية بصرية كاملة</option>
+                    <option value="Motion Graphics">موشن جرافيك (فيديو)</option>
+                    <option value="3D Modeling">تصميم ثري دي (3D)</option>
+                    <option value="Vector Art">فيكتور آرت (تحويل لكرتون)</option>
+                    <option value="Gaming Intro">إنترو ألعاب</option>
+                    <option value="Business Card">كروت شخصية</option>
+                    <option value="Menu Design">تصميم منيو</option>
+                    <option value="Book Cover">غلاف كتاب</option>
+                </select>
+
+                <label>الاسم:</label>
+                <input type="text" id="ds_name" placeholder="👤 اسمك">
+                <label>رقم التواصل:</label>
+                <input type="text" id="ds_phone" placeholder="📱 رقمك">
+                <label>اسم التصميم (العنوان):</label>
+                <input type="text" id="ds_title" placeholder="✨ يكتب على التصميم">
+                <label>وصف الفكرة بالتفصيل:</label>
+                <textarea id="ds_desc" rows="4" placeholder="📝 ألوانك المفضلة وتخيلك للشكل"></textarea>
+
+                <button class="btn-send" onclick="sendDesign()">إرسال الطلب 🖼️</button>
+            </div>
+        </details>
+
+        <details>
+            <summary>تعليم الواتساب | WA ACADEMY 🛠️</summary>
+            <div class="content">
+                <input type="text" id="wa_name" placeholder="👤 الاسم">
+                <input type="text" id="wa_phone" placeholder="📱 الرقم">
+                <input type="email" id="wa_email" placeholder="📧 الجيميل">
+                <textarea id="wa_desc" rows="3" placeholder="📚 ماذا تريد أن تتعلم؟"></textarea>
+                <button class="btn-send" onclick="sendWA()">إرسال الطلب 🚀</button>
+            </div>
+        </details>
+
+        <details>
+            <summary>الأمن السيبراني | CYBER SECURITY 🛡️</summary>
+            <div class="content">
+                <label>المسار التعليمي المطلوب:</label>
+                <select id="cy_goal">
+                    <optgroup label="المسارات القانونية ✅">
+                        <option value="Web Pentesting">اختبار اختراق الويب</option>
+                        <option value="Network Security">أساسيات الشبكات وتأمينها</option>
+                        <option value="Python for Hackers">لغة بايثون للهكرز</option>
+                        <option value="Linux Essentials">احتراف نظام لينكس</option>
+                        <option value="Bug Bounty">صيد الثغرات (البج باونتي)</option>
+                        <option value="Mobile Security">أمن الهواتف الذكية</option>
+                        <option value="Cryptography">علم التشفير</option>
+                    </optgroup>
+                    <optgroup label="أعمال غير قانونية (للعلم فقط) ⚠️">
+                        <option value="Account Cracking" class="illegal">اختراق حسابات (غير قانوني) ⚠️</option>
+                        <option value="DDOS Attacks" class="illegal">هجمات الحجب (غير قانوني) ⚠️</option>
+                        <option value="Data Scraping" class="illegal">سحب البيانات (غير قانوني) ⚠️</option>
+                    </optgroup>
+                </select>
+
+                <input type="text" id="cy_name" placeholder="👤 الاسم">
+                <input type="text" id="cy_phone" placeholder="📱 الرقم">
+                <input type="email" id="cy_email" placeholder="📧 الجيميل">
+                <textarea id="cy_desc" rows="3" placeholder="🔍 تفاصيل ما تريد تعلمه"></textarea>
+                <button class="btn-send" onclick="sendCyber()">إرسال الطلب ⚔️</button>
+            </div>
+        </details>
 
     </div>
+
+    <footer>
+        <p>⌬ ASHRY NETWORK - ALL RIGHTS RESERVED - UCHIHA CLAN ⌬</p>
+    </footer>
 
     <script>
         const myNum = "201038760809";
 
         function sendStore() {
-            const name = document.getElementById('store_name').value;
-            const phone = document.getElementById('store_phone').value;
-            const game = document.getElementById('store_game').value;
-            const qty = document.getElementById('store_qty').value;
-            const id = document.getElementById('store_id').value;
+            const name = document.getElementById('st_name').value;
+            const phone = document.getElementById('st_phone').value;
+            const game = document.getElementById('st_game').value;
+            const qty = document.getElementById('st_qty').value;
+            const id = document.getElementById('st_id').value;
 
-            const msg = `╔════════════════════╗%0A║ ⚡ *𝐀𝐒𝐇𝐑𝐘 𝐒𝐓𝐎𝐑𝐄* ⚡%0A╠════════════════════╝%0A👤 *العميل:* ${name}%0A🕹️ *اللعبة:* ${game}%0A💎 *الكمية:* ${qty}%0A🆔 *الآي دي:* \`${id}\` %0A📱 *التواصل:* ${phone}%0A╚───────────────────╼`;
+            const msg = `╔════════════════════╗%0A║ ⚡ *𝐀𝐒𝐇𝐑𝐘 𝐒𝐓𝐎𝐑𝐄* ⚡%0A╠════════════════════╝%0A⌬ *NAME:* ${name}%0A⌬ *GAME:* ${game}%0A⌬ *QTY:* ${qty}%0A⌬ *ID:* ⟦ ${id} ⟧%0A⌬ *TEL:* ${phone}%0A╚───────────────────╼`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
         function sendDesign() {
             const name = document.getElementById('ds_name').value;
             const phone = document.getElementById('ds_phone').value;
-            const title = document.getElementById('ds_title').value;
             const type = document.getElementById('ds_type').value;
+            const title = document.getElementById('ds_title').value;
             const desc = document.getElementById('ds_desc').value;
 
-            const msg = `┌─── ⋆ *𝐀𝐒𝐇𝐑𝐘 𝐃𝐄𝐒𝐈𝐆𝐍* ⋆ ───┐%0A❖ *العميل:* ${name} 👤%0A❖ *الاسم:* ${title} ✨%0A❖ *الطلب:* ${type} 🖼️%0A❖ *الوصف:* ${desc} 📝%0A❖ *التواصل:* ${phone} 📞%0A└───────────────────┘`;
+            const msg = `┌─── ⋆ *𝐀𝐒𝐇𝐑𝐘 𝐃𝐄𝐒𝐈𝐆𝐍* ⋆ ───┐%0A❖ *CLIENT:* ${name}%0A❖ *ART:* ${type}%0A❖ *TITLE:* ${title}%0A❖ *DESC:* ${desc}%0A❖ *TEL:* ${phone}%0A└───────────────────┘`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
-        function sendWAEdu() {
+        function sendWA() {
             const name = document.getElementById('wa_name').value;
             const phone = document.getElementById('wa_phone').value;
-            const email = document.getElementById('wa_email').value;
+            const mail = document.getElementById('wa_email').value;
             const desc = document.getElementById('wa_desc').value;
 
-            const msg = `╔═ ❮ *𝐖𝐀-𝐀𝐂𝐀𝐃𝐄𝐌𝐘* ❯ ══════╗%0A◈ *الطالب:* ${name} 👨‍💻%0A◈ *الجيميل:* ${email} 📧%0A◈ *الاحتياج:* ${desc} 📚%0A◈ *الهاتف:* ${phone} 📱%0A╚════════════════════╝`;
+            const msg = `╔═ ❮ *𝐖𝐀-𝐀𝐂𝐀𝐃𝐄𝐌𝐘* ❯ ══════╗%0A◈ *STUDENT:* ${name}%0A◈ *MAIL:* ${mail}%0A◈ *REQ:* ${desc}%0A◈ *TEL:* ${phone}%0A╚════════════════════╝`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
         function sendCyber() {
             const name = document.getElementById('cy_name').value;
             const phone = document.getElementById('cy_phone').value;
-            const email = document.getElementById('cy_email').value;
+            const mail = document.getElementById('cy_email').value;
             const goal = document.getElementById('cy_goal').value;
             const desc = document.getElementById('cy_desc').value;
 
-            const msg = `⚔️ ⟦ *𝐂𝐘𝐁𝐄𝐑 𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘* ⟧ ⚔️%0A❯── *الاسم:* ${name} 👤%0A❯── *الحالة:* ${goal}%0A❯── *المطلوب:* ${desc} 🔍%0A❯── *الجيميل:* ${email} 📧%0A❯── *الهاتف:* ${phone} 📱%0A⌞───────────────────⌟`;
+            const msg = `⚔️ ⟦ *𝐂𝐘𝐁𝐄𝐑-𝐒𝐄𝐂* ⟧ ⚔️%0A❯── *USER:* ${name}%0A❯── *PATH:* ${goal}%0A❯── *INFO:* ${desc}%0A❯── *MAIL:* ${mail}%0A❯── *TEL:* ${phone}%0A⌞───────────────────⌟`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
     </script>
