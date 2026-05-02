@@ -3,341 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHRY NETWORK | الإمبراطورية الرقمية</title>
+    <title>ASHRY NETWORK | الإمبراطورية العظمى</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@500;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap');
 
         :root {
-            --blood-red: #cc0000;
-            --sharingan-red: #ff0000;
-            --void: #020202;
+            --red: #ff0000;
+            --dark-red: #660000;
+            --black: #080808;
             --glass: rgba(15, 15, 15, 0.9);
         }
 
         body, html {
             margin: 0; padding: 0;
-            background: var(--void);
+            background: var(--black);
             color: #fff;
             font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* الخلفية الأسطورية المتحركة */
-        .infinite-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
+        /* خلفية الأنمي المتحركة */
+        .bg-animate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background: radial-gradient(circle at 50% 50%, #1a0000 0%, #000 100%);
         }
-
-        .anime-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            animation: drift 60s linear infinite;
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.3;
         }
 
-        @keyframes drift { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
-
-        /* مانجيكيو شارينجان (إيتاتشي ستايل) */
-        .sharingan-wrapper {
-            position: relative;
+        /* المانجيكيو شارينجان الأصلية (SVG) */
+        .sharingan-container {
             width: 180px; height: 180px;
-            margin-bottom: 30px;
-            animation: rotateSharingan 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-
-        .sharingan-eye {
-            width: 100%; height: 100%;
-            background: var(--sharingan-red);
-            border-radius: 50%;
-            border: 5px solid #000;
             position: relative;
-            box-shadow: 0 0 50px var(--sharingan-red);
-        }
-
-        .mangekyou-pattern {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100%; height: 100%;
-            transform: translate(-50%, -50%);
-            background: 
-                radial-gradient(circle, #000 15%, transparent 16%),
-                conic-gradient(from 0deg, transparent 0 30deg, #000 30deg 90deg, transparent 90deg 150deg, #000 150deg 210deg, transparent 210deg 270deg, #000 270deg 330deg, transparent 330deg);
-            border-radius: 50%;
-            clip-path: circle(48%);
+            animation: rotateSharingan 15s linear infinite;
+            filter: drop-shadow(0 0 20px var(--red));
+            margin-bottom: 20px;
         }
 
         @keyframes rotateSharingan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* الواجهة الرئيسية */
+        /* الهيرو */
         .hero {
             height: 100vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            text-align: center; padding: 0 20px;
         }
 
         .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
-            color: white;
-            text-shadow: 0 0 30px var(--sharingan-red);
-            margin: 0;
-            letter-spacing: 5px;
+            font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 5rem);
+            margin: 10px 0; text-shadow: 0 0 30px var(--red);
         }
 
-        .hero p { font-size: 1.2rem; color: #888; margin-bottom: 30px; }
+        /* الأقسام المنسدلة */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
-        /* الروابط الاجتماعية */
-        .social-grid {
-            display: flex; gap: 20px; margin-bottom: 40px;
-        }
-
-        .social-grid a {
-            width: 60px; height: 60px;
-            background: rgba(255,0,0,0.1);
-            border: 1px solid var(--sharingan-red);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.8rem;
-            transition: 0.4s;
-            text-decoration: none;
-        }
-
-        .social-grid a:hover {
-            background: var(--sharingan-red);
-            box-shadow: 0 0 30px var(--sharingan-red);
-            transform: scale(1.2) rotate(360deg);
-        }
-
-        /* الأقسام والخدمات */
-        .main-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        .section-box {
+        details {
             background: var(--glass);
-            border: 1px solid rgba(255,0,0,0.2);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            overflow: hidden;
+            border: 1px solid var(--dark-red);
+            border-radius: 15px;
+            margin-bottom: 25px;
             transition: 0.3s;
         }
 
+        details[open] { border-color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+
         summary {
-            padding: 25px;
-            font-size: 1.6rem;
-            font-weight: 900;
-            cursor: pointer;
-            list-style: none;
-            display: flex; align-items: center; gap: 15px;
-            background: linear-gradient(90deg, rgba(255,0,0,0.1), transparent);
+            padding: 25px; font-size: 1.5rem; font-weight: 900;
+            cursor: pointer; list-style: none; display: flex; align-items: center; gap: 15px;
         }
 
-        summary::after { content: '↡'; margin-right: auto; color: var(--sharingan-red); }
+        summary::before { content: "⌬"; color: var(--red); font-size: 1.8rem; }
 
-        .inner-content { padding: 30px; border-top: 1px solid #333; }
+        .form-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; padding: 30px; border-top: 1px solid #333;
+        }
 
-        label { color: var(--sharingan-red); font-weight: bold; font-size: 0.9rem; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+
+        label { color: var(--red); font-weight: bold; font-size: 0.9rem; }
 
         input, select, textarea {
-            width: 100%; padding: 15px; margin: 10px 0 20px;
-            background: #000; border: 1px solid #222;
+            padding: 15px; background: #000; border: 1px solid #222;
             border-radius: 10px; color: #fff; font-family: 'Cairo';
+            transition: 0.3s;
         }
 
-        input:focus { border-color: var(--sharingan-red); outline: none; }
+        input:focus { border-color: var(--red); outline: none; box-shadow: 0 0 10px var(--dark-red); }
 
-        .btn-order {
-            width: 100%; padding: 20px;
-            background: linear-gradient(45deg, var(--blood-red), #330000);
+        .btn-submit {
+            grid-column: 1 / -1; padding: 20px;
+            background: linear-gradient(45deg, #800000, #ff0000);
             color: white; border: none; border-radius: 10px;
-            font-weight: bold; font-size: 1.2rem;
-            cursor: pointer; transition: 0.4s;
-            text-transform: uppercase;
+            font-weight: 900; font-size: 1.2rem; cursor: pointer;
+            transition: 0.4s; text-transform: uppercase;
         }
 
-        .btn-order:hover { letter-spacing: 3px; box-shadow: 0 0 30px var(--sharingan-red); }
+        .btn-submit:hover { letter-spacing: 3px; transform: scale(1.02); }
 
-        /* التعليقات اللانهائية */
-        .comments-section { margin-top: 100px; }
-        .comment-card {
-            background: rgba(255,255,255,0.03);
-            padding: 25px; border-radius: 15px;
-            margin-bottom: 20px; border-right: 5px solid var(--sharingan-red);
-        }
-        .stars { color: gold; margin-bottom: 10px; }
+        /* نظام التعليقات */
+        .reviews-section { margin-top: 60px; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 20px; }
+        .review-card { background: #111; padding: 20px; border-radius: 12px; margin-bottom: 15px; border-right: 5px solid var(--red); animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
 
-        footer { text-align: center; padding: 60px; color: #444; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 50px; color: #444; border-top: 1px solid #111; }
 
     </style>
 </head>
 <body>
 
-    <div class="infinite-bg"></div>
-    <div class="anime-overlay"></div>
+    <div class="bg-animate"></div>
+    <div class="bg-overlay"></div>
 
     <section class="hero">
-        <div class="sharingan-wrapper">
-            <div class="sharingan-eye">
-                <div class="mangekyou-pattern"></div>
-            </div>
+        <div class="sharingan-container">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" fill="#ff0000" stroke="black" stroke-width="1"/>
+                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(0 50 50)"/>
+                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(60 50 50)"/>
+                <path d="M50 2 C 30 20, 30 80, 50 98 C 70 80, 70 20, 50 2" fill="black" transform="rotate(120 50 50)"/>
+                <circle cx="50" cy="50" r="12" fill="#ff0000" stroke="black" stroke-width="2"/>
+                <circle cx="50" cy="50" r="5" fill="black"/>
+            </svg>
         </div>
         <h1>ASHRY NETWORK</h1>
-        <p>نطاق السيطرة الرقمية | UCHIHA CLAN INHERITANCE</p>
+        <p>CONTROL THE DOMAIN | الإمبراطورية الرقمية</p>
         
-        <div class="social-grid">
-            <a href="https://wa.me/201038760809"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div style="display:flex; gap:25px; margin:20px; font-size: 28px;">
+            <a href="https://wa.me/201038760809" style="color:white"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/ashry_network" style="color:white"><i class="fab fa-telegram"></i></a>
+            <a href="#" style="color:white"><i class="fab fa-youtube"></i></a>
+            <a href="#" style="color:white"><i class="fab fa-instagram"></i></a>
         </div>
-
-        <a href="#services" class="btn-order" style="width: auto; padding: 15px 50px; border-radius: 50px;">دخول النطاق ⌬</a>
     </section>
 
-    <div id="services" class="main-content">
+    <div class="container">
 
-        <details class="section-box">
+        <details>
             <summary>🎮 عشري ستور | ASHRY STORE</summary>
-            <div class="inner-content">
-                <label>اختر الخدمة:</label>
-                <select>
-                    <option>PUBG Mobile UC (Global/Egypt)</option>
-                    <option>Free Fire Diamonds (ID)</option>
-                    <option>Roblox Robux (Fast/Premium)</option>
-                    <option>E-Football Coins</option>
-                    <option>Valorant Points</option>
-                    <option>League of Legends RP</option>
-                    <option>Discord Nitro (1 Month / 1 Year)</option>
-                    <option>Steam Gift Cards</option>
-                </select>
-                <input type="text" placeholder="الآي دي (ID) أو الإيميل">
-                <input type="number" placeholder="الكمية المطلوبة">
-                <button class="btn-order">إتمام عملية الشحن ⚡</button>
+            <div class="form-grid">
+                <div class="input-group"><label>الاسم الكامل</label><input type="text" id="st_name"></div>
+                <div class="input-group"><label>رقم الهاتف (واتساب)</label><input type="text" id="st_phone"></div>
+                <div class="input-group"><label>الجيميل</label><input type="email" id="st_mail"></div>
+                <div class="input-group">
+                    <label>اللعبة / الخدمة</label>
+                    <select id="st_game">
+                        <option>PUBG Mobile (Global/Egypt)</option><option>Free Fire Diamonds</option>
+                        <option>Roblox Robux</option><option>E-Football Coins</option>
+                        <option>Valorant Points</option><option>Discord Nitro</option>
+                        <option>Ludo Star Gems</option><option>8 Ball Pool Cash</option>
+                        <option>TikTok Coins</option><option>PlayStation Cards</option>
+                    </select>
+                </div>
+                <div class="input-group"><label>الآي دي (ID)</label><input type="text" id="st_id"></div>
+                <div class="input-group"><label>الكمية</label><input type="number" id="st_qty"></div>
+                <button class="btn-submit" onclick="send('Store')">إتمام الطلب ⚡</button>
             </div>
         </details>
 
-        <details class="section-box">
+        <details>
             <summary>🎨 عشري ديزاين | ASHRY DESIGN</summary>
-            <div class="inner-content">
-                <label>نوع العمل الفني:</label>
-                <select>
-                    <option>Professional Logo (لوجو احترافي)</option>
-                    <option>YouTube Banner & Avatar</option>
-                    <option>Social Media Designs (بوستات)</option>
-                    <option>Motion Graphics Video</option>
-                    <option>3D Branding (أكياس وتغليف)</option>
-                    <option>Vector Art (تحويل لكرتون)</option>
-                </select>
-                <input type="text" placeholder="اسم البراند / النص">
-                <textarea rows="4" placeholder="اوصف تخيلك للتصميم، الألوان، المود العام..."></textarea>
-                <button class="btn-order">طلب التصميم الآن 🖼️</button>
+            <div class="form-grid">
+                <div class="input-group"><label>الاسم</label><input type="text" id="ds_name"></div>
+                <div class="input-group">
+                    <label>نوع التصميم</label>
+                    <select id="ds_type">
+                        <option>لوجو براند (Minimalist)</option><option>لوجو قيمنق (Mascot)</option>
+                        <option>بنر يوتيوب / تويتش</option><option>تصميم منتجات وأكياس (3D)</option>
+                        <option>موشن جرافيك (Motion)</option><option>تعديل صور (Retouch)</option>
+                    </select>
+                </div>
+                <div class="input-group" style="grid-column: 1 / -1;"><label>وصف الفكرة بالتفصيل</label><textarea id="ds_desc" rows="4"></textarea></div>
+                <button class="btn-submit" onclick="send('Design')">بدأ الإبداع 🎨</button>
             </div>
         </details>
 
-        <details class="section-box">
+        <details>
             <summary>🌐 عشري ويب | ASHRY WEB</summary>
-            <div class="inner-content">
-                <label>نوع الموقع:</label>
-                <select>
-                    <option>Landing Page (صفحة واحدة)</option>
-                    <option>E-commerce (متجر إلكتروني متكامل)</option>
-                    <option>Business Website (موقع تعريفي)</option>
-                    <option>Dashboard (لوحة تحكم خاصة)</option>
-                </select>
-                <input type="text" placeholder="اسم المشروع">
-                <textarea rows="3" placeholder="المميزات المطلوبة (دفع إلكتروني، دردشة، إلخ)"></textarea>
-                <button class="btn-order">بدأ البرمجة 💻</button>
+            <div class="form-grid">
+                <div class="input-group"><label>اسم المشروع</label><input type="text" id="web_title"></div>
+                <div class="input-group">
+                    <label>نوع الموقع</label>
+                    <select id="web_type">
+                        <option>صفحة هبوط (Landing Page)</option><option>متجر إلكتروني (E-commerce)</option>
+                        <option>موقع شركة (Business)</option><option>برمجة بوت تليجرام</option>
+                    </select>
+                </div>
+                <div class="input-group" style="grid-column: 1 / -1;"><label>المميزات (مثلاً: نظام دفع، لغات متعددة)</label><textarea id="web_desc" rows="3"></textarea></div>
+                <button class="btn-submit" onclick="send('Web')">طلب البرمجة 💻</button>
             </div>
         </details>
 
-        <details class="section-box">
-            <summary>🛡️ الأمن السيبراني | CYBER SEC</summary>
-            <div class="inner-content">
-                <label>المسار المطلوب:</label>
-                <select>
-                    <option>تأمين حسابات السوشيال ميديا</option>
-                    <option>اختبار اختراق المواقع (Pentest)</option>
-                    <option>دورة تعليم الهكر الأخلاقي</option>
-                    <option>استرجاع حسابات مخترقة</option>
-                    <option style="color:red">خدمات خاصة (سري للغاية)</option>
-                </select>
-                <textarea rows="3" placeholder="اشرح مشكلتك أو هدفك التقني"></textarea>
-                <button class="btn-order">تواصل مع الخبير ⚔️</button>
+        <details>
+            <summary>🛡️ السايبر & أكاديمية | CYBER & ACADEMY</summary>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>المسار المختار</label>
+                    <select id="cy_type">
+                        <option>كورس الاختراق الأخلاقي (كامل)</option><option>كورس اختراق المواقع</option>
+                        <option>كورس تعلم بايثون من الصفر</option><option>تأمين شامل للحسابات</option>
+                        <option>استرجاع داتا مخترقة</option><option style="color:red">خدمة سحب بيانات (خاص)</option>
+                    </select>
+                </div>
+                <div class="input-group"><label>الاسم</label><input type="text" id="cy_name"></div>
+                <button class="btn-submit" onclick="send('Cyber')">حجز مكانك ⚔️</button>
             </div>
         </details>
 
-        <details class="section-box">
-            <summary>📚 عشري أكاديمي | ACADEMY</summary>
-            <div class="inner-content">
-                <label>ماذا تريد أن تتعلم؟</label>
-                <select>
-                    <option>برمجة المواقع (Frontend/Backend)</option>
-                    <option>احتراف التصميم (Photoshop/Illustrator)</option>
-                    <option>أسرار الربح من الواتساب</option>
-                    <option>صناعة بوتات التليجرام</option>
-                </select>
-                <button class="btn-order">حجز مقعدك الدراسي 📖</button>
-            </div>
-        </details>
-
-        <div class="comments-section">
-            <h2 style="text-align: center; color: var(--sharingan-red);">آراء النخبة (Testimonials)</h2>
+        <div class="reviews-section">
+            <h2 style="text-align: center; color: var(--red);">آراء العملاء ⭐</h2>
+            <div id="comment_box"></div>
             
-            <div class="comment-card">
-                <div class="stars">★★★★★</div>
-                <p><strong>عمر الخياط:</strong> "والله ما كنت مصدق السرعة، شحنت اليوسي في أقل من دقيقة، وعشري شخص محترم جداً."</p>
+            <div style="margin-top: 30px; border-top: 1px solid #222; padding-top: 20px;">
+                <input type="text" id="user_name" placeholder="اسمك">
+                <textarea id="user_comment" placeholder="اكتب رأيك هنا..." rows="3"></textarea>
+                <button class="btn-submit" onclick="postComment()" style="padding: 10px;">نشر التعليق</button>
             </div>
-
-            <div class="comment-card">
-                <div class="stars">★★★★★</div>
-                <p><strong>سارة مجدي:</strong> "عملي لوجو للبراند بتاعي خرافة، حرفياً جاب اللي في خيالي وحطه على الورق."</p>
-            </div>
-
-            <div class="comment-card">
-                <div class="stars">★★★★★</div>
-                <p><strong>باسم هكر:</strong> "كورس الحماية غير تفكيري تماماً، بقيت فاهم ثغرات كنت غافل عنها، شكراً يا بطل."</p>
-            </div>
-
-            <div class="comment-card">
-                <div class="stars">★★★★★</div>
-                <p><strong>كريم يحيى:</strong> "المتجر الإلكتروني اللي عملهولي شغال زي الطلقة، والتحكم فيه سهل جداً."</p>
-            </div>
-
-            <div class="comment-card">
-                <div class="stars">★★★★★</div>
-                <p><strong>ياسر "النينجا":</strong> "المانجيكيو شارينجان في الموقع لوحدها تخليك تشتري وأنت مغمض!"</p>
-            </div>
-            
-            </div>
+        </div>
 
     </div>
 
-    <footer>
-        <p>⌬ ASHRY NETWORK | POWERED BY UCHIHA CLAN ⌬</p>
-        <p>© 2026 جميع الحقوق محفوظة لشبكة عشري</p>
-    </footer>
+    <footer>⌬ ASHRY NETWORK - UCHIHA POWER 2026 ⌬</footer>
 
     <script>
-        // كود بسيط لربط جميع الأزرار بالواتساب تلقائياً
-        document.querySelectorAll('.btn-order').forEach(btn => {
-            btn.onclick = () => {
-                const section = btn.closest('details').querySelector('summary').innerText;
-                const phone = "201038760809";
-                const text = `مرحباً عشري، أريد طلب خدمة من قسم: ${section}`;
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-            };
-        });
+        const phoneNum = "201038760809";
+
+        // وظيفة إرسال البيانات للواتساب بتنسيق فخم
+        function send(type) {
+            let msg = `*طلب جديد من: ${type}*%0A`;
+            msg += `--------------------------%0A`;
+            msg += `تواصل معي لتنفيذ الطلب.`;
+            window.open(`https://wa.me/${phoneNum}?text=${msg}`, '_blank');
+        }
+
+        // وظيفة التعليقات مع الحفظ في المتصفح
+        function postComment() {
+            const name = document.getElementById('user_name').value;
+            const text = document.getElementById('user_comment').value;
+            if(!name || !text) return alert("املا الخانات يا بطل!");
+
+            const comment = { name, text, date: new Date().toLocaleDateString() };
+            let comments = JSON.parse(localStorage.getItem('ashry_comments') || '[]');
+            comments.push(comment);
+            localStorage.setItem('ashry_comments', JSON.stringify(comments));
+            renderComments();
+            document.getElementById('user_name').value = '';
+            document.getElementById('user_comment').value = '';
+        }
+
+        function renderComments() {
+            const box = document.getElementById('comment_box');
+            let comments = JSON.parse(localStorage.getItem('ashry_comments') || '[]');
+            box.innerHTML = comments.map(c => `
+                <div class="review-card">
+                    <strong>${c.name}</strong> <small style="color:#555">(${c.date})</small>
+                    <p style="margin:10px 0 0 0">${c.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // تشغيل التعليقات عند الفتح
+        window.onload = renderComments;
     </script>
 </body>
 </html>
