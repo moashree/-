@@ -3,357 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashry Network | عـشـري - Uchiha Style</title>
+    <title>Ashry Network | عـشـري</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Orbitron:wght@500;900&display=swap');
 
         :root {
             --uchicha-red: #ff0000;
-            --sharingan-glow: #ff4d4d;
-            --dark-void: #050505;
-            --glass: rgba(20, 20, 20, 0.85);
+            --dark-void: #020202;
         }
 
-        body {
-            margin: 0;
+        body, html {
+            margin: 0; padding: 0;
             background: var(--dark-void);
             color: #eee;
             font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://w0.peakpx.com/wallpaper/439/843/HD-wallpaper-itachi-uchiha-dark-background-sharingan-naruto-shippuden.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
         }
 
-        /* تأثير الشارينجان */
-        .sharingan-container {
+        .bg-fixed {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 80px;
-            height: 80px;
-            z-index: 1000;
-            filter: drop-shadow(0 0 10px var(--uchicha-red));
-            animation: rotateSharingan 10s linear infinite;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('https://wallpapercave.com/wp/wp8365604.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
-        @keyframes rotateSharingan {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-            position: relative;
-        }
-
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            letter-spacing: 10px;
-            color: var(--uchicha-red);
-            text-shadow: 0 0 20px var(--uchicha-red), 0 0 40px #000;
-            margin: 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 24px;
-            background: rgba(255,0,0,0.1);
-            width: 55px; height: 55px;
-            display: flex; align-items: center; justify-content: center;
+        /* الشارينجان */
+        .sharingan {
+            width: 120px;
+            height: 120px;
+            background-color: var(--uchicha-red);
+            border: 4px solid #000;
             border-radius: 50%;
+            position: relative;
+            animation: rotate 6s linear infinite;
+            box-shadow: 0 0 25px var(--uchicha-red);
+        }
+
+        .sharingan:before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 25px; height: 25px;
+            background: #000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .tomoe {
+            position: absolute;
+            width: 15px; height: 15px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .t1 { top: 15%; left: 45%; }
+        .t2 { bottom: 20%; left: 15%; }
+        .t3 { bottom: 20%; right: 15%; }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin: 20px 0;
+            text-shadow: 0 0 20px var(--uchicha-red);
+        }
+
+        .btn-explore {
+            padding: 15px 40px;
             border: 2px solid var(--uchicha-red);
-            transition: 0.5s;
+            color: white;
             text-decoration: none;
-            box-shadow: 0 0 10px var(--uchicha-red);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.4s;
+            background: rgba(255,0,0,0.05);
         }
 
-        .social-links a:hover {
-            transform: scale(1.2) rotate(360deg);
+        .btn-explore:hover {
             background: var(--uchicha-red);
-            box-shadow: 0 0 30px var(--uchicha-red);
+            box-shadow: 0 0 40px var(--uchicha-red);
+            transform: scale(1.1);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto 100px;
-            padding: 20px;
+        .services {
+            padding: 80px 20px;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
-        /* نظام الأزرار المنسدلة */
         details {
-            background: var(--glass);
+            background: rgba(10,10,10,0.9);
             margin-bottom: 20px;
             border-radius: 15px;
-            border: 1px solid rgba(255,0,0,0.3);
+            border: 1px solid rgba(255,0,0,0.2);
             overflow: hidden;
-            transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         summary {
             padding: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
+            font-size: 1.3rem;
             cursor: pointer;
             list-style: none;
             display: flex;
             align-items: center;
             gap: 15px;
-            background: linear-gradient(90deg, rgba(255,0,0,0.2), transparent);
+            font-weight: bold;
         }
 
-        summary::before {
-            content: '⌬';
-            color: var(--uchicha-red);
-            font-size: 1.8rem;
-        }
+        summary:hover { background: rgba(255,0,0,0.1); }
 
-        .content {
-            padding: 25px;
-            border-top: 1px solid rgba(255,0,0,0.2);
-            animation: slideDown 0.4s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        label { display: block; margin-top: 15px; color: var(--uchicha-red); font-weight: bold; }
+        .content { padding: 25px; background: rgba(0,0,0,0.5); }
 
         input, select, textarea {
-            width: 100%;
-            padding: 14px;
-            margin-top: 8px;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: white;
-            font-family: 'Cairo';
+            width: 100%; padding: 14px; margin: 10px 0;
+            background: #000; border: 1px solid #333;
+            border-radius: 8px; color: #fff; font-family: 'Cairo';
         }
-
-        input:focus, select:focus { border-color: var(--uchicha-red); outline: none; }
 
         .btn-send {
-            width: 100%;
-            padding: 18px;
-            margin-top: 25px;
-            background: var(--uchicha-red);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+            width: 100%; padding: 18px;
+            background: var(--uchicha-red); color: white;
+            border: none; border-radius: 8px; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
         }
 
-        .btn-send:hover {
-            background: #cc0000;
-            letter-spacing: 2px;
-            box-shadow: 0 0 25px var(--uchicha-red);
-        }
+        .btn-send:hover { letter-spacing: 2px; box-shadow: 0 0 15px var(--uchicha-red); }
 
-        .illegal { color: #ff4d4d; font-style: italic; }
-
-        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; }
-
+        footer { text-align: center; padding: 40px; color: #444; }
     </style>
 </head>
 <body>
 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Sharingan_triple.svg/1024px-Sharingan_triple.svg.png" class="sharingan-container" alt="Sharingan">
+    <div class="bg-fixed"></div>
 
-    <header>
-        <h1 class="main-title">ASHRY NETWORK</h1>
-        <div class="social-links">
-            <a href="https://instagram.com/your_user"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/your_user"><i class="fab fa-telegram"></i></a>
-            <a href="https://youtube.com/@your_user"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/201038760809"><i class="fab fa-whatsapp"></i></a>
+    <section class="hero">
+        <div class="sharingan">
+            <div class="tomoe t1"></div>
+            <div class="tomoe t2"></div>
+            <div class="tomoe t3"></div>
         </div>
-    </header>
+        <h1>ASHRY NETWORK</h1>
+        <a href="#main" class="btn-explore">دخول النطاق (Domain Expansion) ⌬</a>
+    </section>
 
-    <div class="container">
-
+    <section id="main" class="services">
+        
         <details>
-            <summary>عشري ستور | ASHRY STORE 🎮</summary>
+            <summary>🎮 عشري ستور | ASHRY STORE</summary>
             <div class="content">
-                <label>اختر اللعبة أو الخدمة:</label>
                 <select id="st_game">
-                    <optgroup label="ألعاب الموبايل والكمبيوتر">
-                        <option value="PUBG UC">ببجي موبايل (UC)</option>
-                        <option value="Free Fire Diamonds">فري فاير (Diamonds)</option>
-                        <option value="Robux">روبلوكس (Robux)</option>
-                        <option value="Valorant Points">فالورانت (Points)</option>
-                        <option value="League of Legends RP">ليج أوف ليجيندز (RP)</option>
-                        <option value="Fortnite V-Bucks">فورتنايت (V-Bucks)</option>
-                        <option value="Mobile Legends">موبايل ليجيندز</option>
-                        <option value="E-Football Coins">إي فوتبول (Coins)</option>
-                        <option value="8 Ball Pool">8 بول بول</option>
-                        <option value="Clash of Clans">كلاش أوف كلانس</option>
-                        <option value="Clash Royale">كلاش رويال</option>
-                        <option value="Apex Legends">أبيكس ليجيندز</option>
-                        <option value="Genshin Impact">جينشين إمباكت</option>
-                    </optgroup>
-                    <optgroup label="بطاقات الشحن والاشتراكات">
-                        <option value="Steam Card">بطاقات ستيم (Steam)</option>
-                        <option value="PlayStation Store">بلايستيشن ستور</option>
-                        <option value="Xbox Gift Card">إكس بوكس</option>
-                        <option value="Discord Nitro">ديسكورد نيترو (Nitro)</option>
-                        <option value="Google Play">جوجل بلاي</option>
-                        <option value="iTunes Card">آيتونز</option>
-                    </optgroup>
+                    <option value="PUBG UC">ببجي موبايل (UC)</option>
+                    <option value="Free Fire">فري فاير (Diamonds)</option>
+                    <option value="Roblox">روبلوكس (Robux)</option>
+                    <option value="Discord Nitro">ديسكورد نيترو</option>
                 </select>
-
-                <label>الاسم بالكامل:</label>
-                <input type="text" id="st_name" placeholder="👤 اسمك">
-                <label>رقم التواصل:</label>
-                <input type="text" id="st_phone" placeholder="📱 رقمك">
-                <label>الكمية المطلوبة:</label>
-                <input type="number" id="st_qty" placeholder="💎 العدد">
-                <label>الآي دي (ID) / الإيميل:</label>
-                <input type="text" id="st_id" placeholder="🆔 معرف الحساب">
-
-                <button class="btn-send" onclick="sendStore()">إرسال الطلب عبر الواتساب ⚡</button>
+                <input type="text" id="st_name" placeholder="الاسم">
+                <input type="text" id="st_id" placeholder="الآي دي (ID)">
+                <input type="number" id="st_qty" placeholder="الكمية">
+                <input type="text" id="st_phone" placeholder="رقم هاتفك">
+                <button class="btn-send" onclick="sendStore()">إرسال الطلب</button>
             </div>
         </details>
 
         <details>
-            <summary>عشري ديزاين | ASHRY DESIGN 🎨</summary>
+            <summary>🎨 عشري ديزاين | ASHRY DESIGN</summary>
             <div class="content">
-                <label>نوع التصميم المطلوب:</label>
                 <select id="ds_type">
-                    <option value="Logo Design">تصميم شعار (لوجو احترافي)</option>
-                    <option value="YouTube Thumbnail">غلاف يوتيوب (Thumbnail)</option>
-                    <option value="YouTube Banner">بنر يوتيوب (Banner)</option>
-                    <option value="Social Media Post">بوستات سوشيال ميديا</option>
-                    <option value="Full Branding">هوية بصرية كاملة</option>
-                    <option value="Motion Graphics">موشن جرافيك (فيديو)</option>
-                    <option value="3D Modeling">تصميم ثري دي (3D)</option>
-                    <option value="Vector Art">فيكتور آرت (تحويل لكرتون)</option>
-                    <option value="Gaming Intro">إنترو ألعاب</option>
-                    <option value="Business Card">كروت شخصية</option>
-                    <option value="Menu Design">تصميم منيو</option>
-                    <option value="Book Cover">غلاف كتاب</option>
+                    <option value="Logo">لوجو (Logo)</option>
+                    <option value="Banner">بنر (Banner)</option>
+                    <option value="Packaging">أكياس تجارية</option>
                 </select>
-
-                <label>الاسم:</label>
-                <input type="text" id="ds_name" placeholder="👤 اسمك">
-                <label>رقم التواصل:</label>
-                <input type="text" id="ds_phone" placeholder="📱 رقمك">
-                <label>اسم التصميم (العنوان):</label>
-                <input type="text" id="ds_title" placeholder="✨ يكتب على التصميم">
-                <label>وصف الفكرة بالتفصيل:</label>
-                <textarea id="ds_desc" rows="4" placeholder="📝 ألوانك المفضلة وتخيلك للشكل"></textarea>
-
-                <button class="btn-send" onclick="sendDesign()">إرسال الطلب 🖼️</button>
+                <input type="text" id="ds_name" placeholder="الاسم">
+                <input type="text" id="ds_title" placeholder="اسم البراند">
+                <textarea id="ds_desc" rows="3" placeholder="وصف التصميم"></textarea>
+                <input type="text" id="ds_phone" placeholder="رقم الهاتف">
+                <button class="btn-send" onclick="sendDesign()">إرسال الطلب</button>
             </div>
         </details>
 
         <details>
-            <summary>تعليم الواتساب | WA ACADEMY 🛠️</summary>
+            <summary>🌐 عشري ويب | ASHRY WEB</summary>
             <div class="content">
-                <input type="text" id="wa_name" placeholder="👤 الاسم">
-                <input type="text" id="wa_phone" placeholder="📱 الرقم">
-                <input type="email" id="wa_email" placeholder="📧 الجيميل">
-                <textarea id="wa_desc" rows="3" placeholder="📚 ماذا تريد أن تتعلم؟"></textarea>
-                <button class="btn-send" onclick="sendWA()">إرسال الطلب 🚀</button>
+                <select id="web_type">
+                    <option value="Personal Website">موقع شخصي (Portfolio)</option>
+                    <option value="E-commerce Store">متجر إلكتروني</option>
+                    <option value="Landing Page">صفحة هبوط (Landing Page)</option>
+                    <option value="Admin Panel">لوحة تحكم (Admin Panel)</option>
+                    <option value="Fixed HTML/CSS">برمجة صفحة ثابتة</option>
+                </select>
+                <input type="text" id="web_name" placeholder="اسمك">
+                <input type="text" id="web_title" placeholder="اسم الموقع المطلوب">
+                <textarea id="web_desc" rows="3" placeholder="اشرح فكرة موقعك وعدد الصفحات"></textarea>
+                <input type="text" id="web_phone" placeholder="رقم هاتفك">
+                <button class="btn-send" onclick="sendWeb()">طلب برمجة الموقع</button>
             </div>
         </details>
 
         <details>
-            <summary>الأمن السيبراني | CYBER SECURITY 🛡️</summary>
+            <summary>🛡️ الأمن السيبراني | CYBER SECURITY</summary>
             <div class="content">
-                <label>المسار التعليمي المطلوب:</label>
                 <select id="cy_goal">
-                    <optgroup label="المسارات القانونية ✅">
-                        <option value="Web Pentesting">اختبار اختراق الويب</option>
-                        <option value="Network Security">أساسيات الشبكات وتأمينها</option>
-                        <option value="Python for Hackers">لغة بايثون للهكرز</option>
-                        <option value="Linux Essentials">احتراف نظام لينكس</option>
-                        <option value="Bug Bounty">صيد الثغرات (البج باونتي)</option>
-                        <option value="Mobile Security">أمن الهواتف الذكية</option>
-                        <option value="Cryptography">علم التشفير</option>
-                    </optgroup>
-                    <optgroup label="أعمال غير قانونية (للعلم فقط) ⚠️">
-                        <option value="Account Cracking" class="illegal">اختراق حسابات (غير قانوني) ⚠️</option>
-                        <option value="DDOS Attacks" class="illegal">هجمات الحجب (غير قانوني) ⚠️</option>
-                        <option value="Data Scraping" class="illegal">سحب البيانات (غير قانوني) ⚠️</option>
-                    </optgroup>
+                    <option value="Web Hacking">اختراق الويب ✅</option>
+                    <option value="Linux">تعلم لينكس ✅</option>
+                    <option value="Illegal" style="color:red">سحب داتا (غير قانوني) ⚠️</option>
                 </select>
-
-                <input type="text" id="cy_name" placeholder="👤 الاسم">
-                <input type="text" id="cy_phone" placeholder="📱 الرقم">
-                <input type="email" id="cy_email" placeholder="📧 الجيميل">
-                <textarea id="cy_desc" rows="3" placeholder="🔍 تفاصيل ما تريد تعلمه"></textarea>
-                <button class="btn-send" onclick="sendCyber()">إرسال الطلب ⚔️</button>
+                <input type="text" id="cy_name" placeholder="الاسم">
+                <textarea id="cy_desc" rows="3" placeholder="المطلوب بالتفصيل"></textarea>
+                <input type="text" id="cy_phone" placeholder="رقم الهاتف">
+                <button class="btn-send" onclick="sendCyber()">إرسال الطلب</button>
             </div>
         </details>
 
-    </div>
+    </section>
 
-    <footer>
-        <p>⌬ ASHRY NETWORK - ALL RIGHTS RESERVED - UCHIHA CLAN ⌬</p>
-    </footer>
+    <footer>⌬ ASHRY NETWORK - UCHIHA CLAN 2026 ⌬</footer>
 
     <script>
         const myNum = "201038760809";
 
         function sendStore() {
-            const name = document.getElementById('st_name').value;
-            const phone = document.getElementById('st_phone').value;
-            const game = document.getElementById('st_game').value;
-            const qty = document.getElementById('st_qty').value;
-            const id = document.getElementById('st_id').value;
-
-            const msg = `╔════════════════════╗%0A║ ⚡ *𝐀𝐒𝐇𝐑𝐘 𝐒𝐓𝐎𝐑𝐄* ⚡%0A╠════════════════════╝%0A⌬ *NAME:* ${name}%0A⌬ *GAME:* ${game}%0A⌬ *QTY:* ${qty}%0A⌬ *ID:* ⟦ ${id} ⟧%0A⌬ *TEL:* ${phone}%0A╚───────────────────╼`;
+            const msg = `╔════════════════════╗%0A║ ⚡ *𝐀𝐒𝐇𝐑𝐘 𝐒𝐓𝐎𝐑𝐄* ⚡%0A╠════════════════════╝%0A⌬ *NAME:* ${document.getElementById('st_name').value}%0A⌬ *GAME:* ${document.getElementById('st_game').value}%0A⌬ *ID:* ${document.getElementById('st_id').value}%0A⌬ *TEL:* ${document.getElementById('st_phone').value}%0A╚───────────────────╼`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
         function sendDesign() {
-            const name = document.getElementById('ds_name').value;
-            const phone = document.getElementById('ds_phone').value;
-            const type = document.getElementById('ds_type').value;
-            const title = document.getElementById('ds_title').value;
-            const desc = document.getElementById('ds_desc').value;
-
-            const msg = `┌─── ⋆ *𝐀𝐒𝐇𝐑𝐘 𝐃𝐄𝐒𝐈𝐆𝐍* ⋆ ───┐%0A❖ *CLIENT:* ${name}%0A❖ *ART:* ${type}%0A❖ *TITLE:* ${title}%0A❖ *DESC:* ${desc}%0A❖ *TEL:* ${phone}%0A└───────────────────┘`;
+            const msg = `┌─── ⋆ *𝐀𝐒𝐇𝐑𝐘 𝐃𝐄𝐒𝐈𝐆𝐍* ⋆ ───┐%0A❖ *CLIENT:* ${document.getElementById('ds_name').value}%0A❖ *ART:* ${document.getElementById('ds_type').value}%0A❖ *DESC:* ${document.getElementById('ds_desc').value}%0A❖ *TEL:* ${document.getElementById('ds_phone').value}%0A└───────────────────┘`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
-        function sendWA() {
-            const name = document.getElementById('wa_name').value;
-            const phone = document.getElementById('wa_phone').value;
-            const mail = document.getElementById('wa_email').value;
-            const desc = document.getElementById('wa_desc').value;
-
-            const msg = `╔═ ❮ *𝐖𝐀-𝐀𝐂𝐀𝐃𝐄𝐌𝐘* ❯ ══════╗%0A◈ *STUDENT:* ${name}%0A◈ *MAIL:* ${mail}%0A◈ *REQ:* ${desc}%0A◈ *TEL:* ${phone}%0A╚════════════════════╝`;
+        function sendWeb() {
+            const msg = `🌐 ⟦ *𝐀𝐒𝐇𝐑𝐘 𝐖𝐄𝐁* ⟧ 🌐%0A❯── *CLIENT:* ${document.getElementById('web_name').value}%0A❯── *TYPE:* ${document.getElementById('web_type').value}%0A❯── *TITLE:* ${document.getElementById('web_title').value}%0A❯── *DESC:* ${document.getElementById('web_desc').value}%0A❯── *TEL:* ${document.getElementById('web_phone').value}%0A⌞───────────────────⌟`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
 
         function sendCyber() {
-            const name = document.getElementById('cy_name').value;
-            const phone = document.getElementById('cy_phone').value;
-            const mail = document.getElementById('cy_email').value;
-            const goal = document.getElementById('cy_goal').value;
-            const desc = document.getElementById('cy_desc').value;
-
-            const msg = `⚔️ ⟦ *𝐂𝐘𝐁𝐄𝐑-𝐒𝐄𝐂* ⟧ ⚔️%0A❯── *USER:* ${name}%0A❯── *PATH:* ${goal}%0A❯── *INFO:* ${desc}%0A❯── *MAIL:* ${mail}%0A❯── *TEL:* ${phone}%0A⌞───────────────────⌟`;
+            const msg = `⚔️ ⟦ *𝐂𝐘𝐁𝐄𝐑-𝐒𝐄𝐂* ⟧ ⚔️%0A❯── *USER:* ${document.getElementById('cy_name').value}%0A❯── *PATH:* ${document.getElementById('cy_goal').value}%0A❯── *TEL:* ${document.getElementById('cy_phone').value}%0A⌞───────────────────⌟`;
             window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
         }
     </script>
